@@ -14,6 +14,7 @@ class ApplicationController < Sinatra::Base
   get "/" do
     @weather = API.auto_search
     @location = API.location_name
+    @news = API.news
     erb :index
   end
 
@@ -42,7 +43,8 @@ class ApplicationController < Sinatra::Base
      
     def compass(deg)
       value = ((deg.to_f / 22.5) + 0.5).floor
-      direction = ["North", "North-Northeast", "Northeast", "East-Northeast", "East", "East-Southeast", "Southeast", "South-Southeast", "South", "South-Southwest", "Southwest", "West-Southwest", "West", "West-Northwest", "Northwest", "North-Northwest"]
+      #direction = ["North", "North-Northeast", "Northeast", "East-Northeast", "East", "East-Southeast", "Southeast", "South-Southeast", "South", "South-Southwest", "Southwest", "West-Southwest", "West", "West-Northwest", "Northwest", "North-Northwest"]
+      direction = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"]
       return direction[(value % 16)]
     end 
 

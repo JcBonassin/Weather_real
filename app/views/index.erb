@@ -39,8 +39,8 @@ Prefacing the CSS selectors with .ie for IE specific styles in your CSS
 					<a href="index.html" class="branding">
 						<img src="images/logo.png" alt="" class="logo">
 						<div class="logo-type">
-							<h1 class="site-title">Weaher Be</h1>
-							<small class="site-description">tagline goes here</small>
+							<h1 class="site-title">Weather Be</h1>
+							<small class="site-description">Weather for You</small>
 						</div>
 					</a>
 
@@ -89,79 +89,86 @@ Prefacing the CSS selectors with .ie for IE specific styles in your CSS
 								<h1><p><%=@weather[:current][:weather].first[:description].capitalize%></p></h1>
 								<span><img src="images/icon-umberella.png" alt=""><%=(@weather[:hourly][1][:pop]*100).floor%>%</span>
 								<span><img src="images/icon-wind.png" alt=""><%=(@weather[:current][:wind_speed].round)%> km/h</span>
-								<span><img src="images/icon-compass.png" alt=""><%=compass(@weather[:current][:wind_deg])%></span> 	
+								<span><%=graph_cond(compass(@weather[:current][:wind_deg]))%><%=compass(@weather[:current][:wind_deg])%></span>
+								
 							</div>
 						</div>
 						<div class="forecast">
 							<div class="forecast-header">
-								<div class="day">Tuesday</div>
+								<div class="day"><%=Time.at(@weather[:daily][1][:dt]).strftime('%A')%></div>
 							</div> <!-- .forecast-header -->
 							<div class="forecast-content">
 								<div class="forecast-icon">
-									<img src="images/icons/icon-3.svg" alt="" width=48>
+									<div style="font-size:4rem"><%=graph_cond(@weather[:daily][1][:weather].first[:description])%></div>
 								</div>
-								<div class="degree">23<sup>o</sup>C</div>
-								<small>18<sup>o</sup></small>
+								<div class="degree"><%=@weather[:daily][1][:temp][:day].to_i%><sup>o</sup>C</div>
+								<div class="min">H :<%=@weather[:daily][1][:temp][:max].to_i%><sup>o</sup></div>
+								<div class="min">L :<%=@weather[:daily][1][:temp][:min].to_i%><sup>o</sup></div>
 							</div>
 						</div>
 						<div class="forecast">
 							<div class="forecast-header">
-								<div class="day">Wednesday</div>
+								<div class="day"><%=Time.at(@weather[:daily][2][:dt]).strftime('%A')%></div>
 							</div> <!-- .forecast-header -->
 							<div class="forecast-content">
 								<div class="forecast-icon">
-									<img src="images/icons/icon-5.svg" alt="" width=48>
+									<div style="font-size:4rem"><%=graph_cond(@weather[:daily][2][:weather].first[:description])%></div>
 								</div>
-								<div class="degree">23<sup>o</sup>C</div>
-								<small>18<sup>o</sup></small>
+								<div class="degree"><%=@weather[:daily][2][:temp][:day].to_i%><sup>o</sup>C</div>
+								<div class="min">H :<%=@weather[:daily][2][:temp][:max].to_i%><sup>o</sup></div>
+								<div class="min">L :<%=@weather[:daily][2][:temp][:min].to_i%><sup>o</sup></div>
 							</div>
 						</div>
 						<div class="forecast">
 							<div class="forecast-header">
-								<div class="day">Thursday</div>
+								<div class="day"><%=Time.at(@weather[:daily][3][:dt]).strftime('%A')%></div>
 							</div> <!-- .forecast-header -->
 							<div class="forecast-content">
 								<div class="forecast-icon">
-									<img src="images/icons/icon-7.svg" alt="" width=48>
+									<div style="font-size:4rem"><%=graph_cond(@weather[:daily][3][:weather].first[:description])%></div>
 								</div>
-								<div class="degree">23<sup>o</sup>C</div>
-								<small>18<sup>o</sup></small>
+								<div class="degree"><%=@weather[:daily][3][:temp][:day].to_i%><sup>o</sup>C</div>
+								<div class="min">H :<%=@weather[:daily][3][:temp][:max].to_i%><sup>o</sup></div>
+								<div class="min">L :<%=@weather[:daily][3][:temp][:min].to_i%><sup>o</sup></div>
 							</div>
 						</div>
 						<div class="forecast">
 							<div class="forecast-header">
-								<div class="day">Friday</div>
+								<div class="day"><%=Time.at(@weather[:daily][4][:dt]).strftime('%A')%></div>
 							</div> <!-- .forecast-header -->
 							<div class="forecast-content">
 								<div class="forecast-icon">
-									<img src="images/icons/icon-12.svg" alt="" width=48>
+									<div style="font-size:4rem"><%=graph_cond(@weather[:daily][4][:weather].first[:description])%></div>
 								</div>
-								<div class="degree">23<sup>o</sup>C</div>
-								<small>18<sup>o</sup></small>
+								<div class="degree"><%=@weather[:daily][4][:temp][:day].to_i%><sup>o</sup>C</div>
+								<div class="min">H :<%=@weather[:daily][4][:temp][:max].to_i%><sup>o</sup></div>
+								<div class="min">L :<%=@weather[:daily][4][:temp][:min].to_i%><sup>o</sup></div>
 							</div>
 						</div>
 						<div class="forecast">
 							<div class="forecast-header">
-								<div class="day">Saturday</div>
+								<div class="day"><%=Time.at(@weather[:daily][5][:dt]).strftime('%A')%></div>
 							</div> <!-- .forecast-header -->
 							<div class="forecast-content">
 								<div class="forecast-icon">
-									<img src="images/icons/icon-13.svg" alt="" width=48>
+									<div style="font-size:4rem"><%=graph_cond(@weather[:daily][5][:weather].first[:description])%></div>
 								</div>
-								<div class="degree">23<sup>o</sup>C</div>
-								<small>18<sup>o</sup></small>
+								<div class="degree"><%=@weather[:daily][5][:temp][:day].to_i%><sup>o</sup>C</div>
+								<div class="min">H :<%=@weather[:daily][5][:temp][:max].to_i%><sup>o</sup></div>
+								<div class="min">L :<%=@weather[:daily][5][:temp][:min].to_i%><sup>o</sup></div>
 							</div>
 						</div>
 						<div class="forecast">
 							<div class="forecast-header">
-								<div class="day">Sunday</div>
+								<div class="day"><%=Time.at(@weather[:daily][6][:dt]).strftime('%A')%></div>
 							</div> <!-- .forecast-header -->
 							<div class="forecast-content">
 								<div class="forecast-icon">
-									<img src="images/icons/icon-14.svg" alt="" width=48>
+									<div style="font-size:4rem"><%=graph_cond(@weather[:daily][6][:weather].first[:description])%></div>
 								</div>
-								<div class="degree">23<sup>o</sup>C</div>
-								<small>18<sup>o</sup></small>
+								<div class="degree"><%=@weather[:daily][6][:temp][:day].to_i%><sup>o</sup>C</div>
+								<div class="min">H :<%=@weather[:daily][6][:temp][:max].to_i%><sup>o</sup></div>
+								<div class="min">L :<%=@weather[:daily][6][:temp][:min].to_i%><sup>o</sup></div>
 							</div>
 						</div>
 					</div>
@@ -203,29 +210,32 @@ Prefacing the CSS selectors with .ie for IE specific styles in your CSS
 						</div>
 					</div>
 				</div>
-
+				<h1><div class="news">BBC News</div></h1>
 				<div class="fullwidth-block" data-bg-color="#262936">
 					<div class="container">
 						<div class="row">
 							<div class="col-md-4">
 								<div class="news">
-									<div class="date">06.10</div>
-									<h3><a href="#">Doloremque laudantium totam sequi </a></h3>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo saepe assumenda dolorem modi, expedita voluptatum ducimus necessitatibus. Asperiores quod reprehenderit necessitatibus harum, mollitia, odit et consequatur maxime nisi amet doloremque.</p>
+									<div class="date"><%=Time.now.strftime('%d %B')%></div>
+									<figure class="live-camera-cover"><img src="<%=@news[:articles][0][:urlToImage]%>" width="230" height="151" alt=""></figure>
+									<h3><a href="<%=@news[:articles][0][:url]%>"target="_blank"><%=@news[:articles][0][:title]%></a></h3>
+									<p><%=@news[:articles][0][:description]%></p>
 								</div>
 							</div>
 							<div class="col-md-4">
 								<div class="news">
-									<div class="date">06.10</div>
-									<h3><a href="#">Doloremque laudantium totam sequi </a></h3>
-									<p>Nobis architecto consequatur ab, ea, eum autem aperiam accusantium placeat vitae facere explicabo temporibus minus distinctio cum optio quis, dignissimos eius aspernatur fuga. Praesentium totam, corrupti beatae amet expedita veritatis.</p>
+									<div class="date"><%=Time.now.strftime('%d %B')%></div>
+									<figure class="live-camera-cover"><img src="<%=@news[:articles][1][:urlToImage]%>" width="230" height="151" alt=""></figure>
+									<h3><a href="<%=@news[:articles][1][:url]%>"target="_blank"><%=@news[:articles][1][:title]%></a></h3>
+									<p><%=@news[:articles][1][:description]%></p>
 								</div>
 							</div>
 							<div class="col-md-4">
 								<div class="news">
-									<div class="date">06.10</div>
-									<h3><a href="#">Doloremque laudantium totam sequi </a></h3>
-									<p>Enim impedit officiis placeat qui recusandae doloremque possimus, iusto blanditiis, quam optio delectus maiores. Possimus rerum, velit cum natus eos. Cumque pariatur beatae asperiores, esse libero quas ad dolorem. Voluptates.</p>
+									<div class="date"><%=Time.now.strftime('%d %B')%></div>
+									<figure class="live-camera-cover"><img src="<%=@news[:articles][2][:urlToImage]%>" width="230" height="151" alt=""></figure>
+									<h3><a href="<%=@news[:articles][2][:url]%>"target="_blank"><%=@news[:articles][2][:title]%></a></h3>
+									<p><%=@news[:articles][2][:description]%></p>
 								</div>
 							</div>
 						</div>

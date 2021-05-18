@@ -32,6 +32,11 @@ class API < Helper
         results = Geocoder.search(ip)
         results.first.city  
     end 
+
+    def self.news 
+        response = HTTParty.get("https://newsapi.org/v2/top-headlines?sources=bbc-news&apiKey=#{ENV['API_NEWS']}")
+        data = JSON.parse(response.read_body, symbolize_names: true)
+    end 
  end 
     
    

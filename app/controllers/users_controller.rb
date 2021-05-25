@@ -1,10 +1,36 @@
 class UsersController < ApplicationController
 
+  get '/signup' do
+    @weather = API.auto_search
+    @location = API.location_name
+    @news = API.news
+    if !logged_in?
+      erb :index, :layout => :'/users/create_user'
+    else
+      redirect_to_main
+    end
+  end
+
+  post '/signup' do
+    if params[:username] == "" || params[:email] == "" || params[:password] == ""
+      redirect to '/signup' # Add flash message
+    else
+      @user = User.new(:username => params[:username], :name => params[:name], :surname => params[:surname], :email => params[:email], :password => params[:password])
+      @user.save
+      session[:user_id] = @user.id
+      flash[:success] = "You have succesfully signup."
+      redirect_to_main
+    end
+  end
+
     get '/login' do
-        if logged_in?
-          redirect to "/main"
+      if !logged_in?
+        @weather = API.auto_search
+        @location = API.location_name
+        @news = API.news 
+        erb :index, :layout => :'users/login'
         else 
-          redirect to "/"
+          redirect_to_main
         end
       end
 
@@ -12,30 +38,10 @@ class UsersController < ApplicationController
         user = User.find_by(:username => params[:username])
         if user && user.authenticate(params[:password])
           session[:user_id] = user.id
-          redirect to "/main"
+          redirect_to_main
         else
           flash[:message] = "Account not found"
           redirect to '/signup'
-        end
-      end
-
-      get '/signup' do
-        if !logged_in?
-          erb :'users/new_user', :layout => :'login_layout'
-        else
-          redirect to '/main'
-        end
-      end
-
-      post '/signup' do
-        if params[:username] == "" || params[:email] == "" || params[:password] == ""
-          redirect to '/signup' # Add flash message
-        else
-          @user = User.new(:username => params[:username], :name => params[:name], :surname => params[:surname], :email => params[:email], :password => params[:password])
-          @user.save
-          session[:user_id] = @user.id
-          flash[:success] = "You have succesfully signup."
-          redirect to "/main"
         end
       end
 

@@ -28,109 +28,57 @@ Prefacing the CSS selectors with .ie for IE specific styles in your CSS
 		<script src="js/ie-support/respond.js"></script>
 		<![endif]-->
 
+	</head>
+
+
+	<body>
 		
-
-  </head>
-  <body>
-  <!-- <% flash.keys.each do |type| %>
-          <div data-alert class="flash alert alert-<%= type %> alert-box radius">
-            <%= flash[type] %>
-          </div>
-        <% end %>-->
-		<div class="container">
-			<div class="flash">
-		   <% if flash[:message] %>
-           <h3 style="color:white;"><%= flash[:message] %></h3>
-      	   <% end %>
-      	   <% if flash[:errors] %>
-           <h3 style="color:red;"><%= flash[:errors] %></h3>
-      	   <% end %>
-			 </div>
-		</div>
-
-	<style>
-	.flash {
-  	float: left;
-	width: 75%;
-	padding-top: 25px;
-	}
-	.flash  h3 { margin-top: 0; color: #fff; }
-	.flash  p { opacity: 0.8; color: #fff; }
-
-#animals{
-  overflow: hidden;
-  padding:0;
-  li{
-    float:left;
-    list-style:none;
-    margin: 0 10px 0 0
-  }
-}
-</style>
-
 		<div class="site-content">
 			<div class="site-header">
 				<div class="container">
-					<a href="/main" class="branding">
+					<a class="branding">
 						<img src="images/logo.png" alt="" class="logo">
 						<div class="logo-type">
 							<h1 class="site-title">Weather Be</h1>
 							<small class="site-description">Weather for You</small>
-							<p><h3>Hey <%=current_user.username.capitalize%></h3></a></p>
-						</div>	
-					</a>
-
-					<!-- Default snippet for navigation -->
-					<div class="main-navigation">
-						<button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
-						<ul class="menu">
-							<!-- <li class="menu-item current-menu-item"><a href="index.html">Home</a></li> -->
-							<li class="menu-item"><a href="news.html">News</a></li>
-							<li class="menu-item"><a href="live-cameras.html">Live cameras</a></li>
-							<li class="menu-item"><a href="photos.html">Photos</a></li>
-							<li class="menu-item"><a href="/logout">logout</a></li>
-						</ul> <!-- .menu -->
-					</div> <!-- .main-navigation -->
-
-					<div class="mobile-navigation"></div>
-
-				</div>
-			</div> <!-- .site-header -->
-
-			
-			<!--	<div class="fullwidth-block" data-bg-color="#262936">
-					<div class="container">
-                    <p><h1>BBC News</h1></p>
-						<div class="row">
-							<div class="col-md-4">
-								<div class="news">
-									<div class="date"><%=Time.now.strftime('%d %B')%></div>
-									<figure class="live-camera-cover"><img src="<%=@news[:articles][0][:urlToImage]%>" width="230" height="151" alt=""></figure>
-									<h3><a href="<%=@news[:articles][0][:url]%>"target="_blank"><%=@news[:articles][0][:title]%></a></h3>
-									<p><%=@news[:articles][0][:description]%></p>
-								</div>
-							</div>
-							<div class="col-md-4">
-								<div class="news">
-									<div class="date"><%=Time.now.strftime('%d %B')%></div>
-									<figure class="live-camera-cover"><img src="<%=@news[:articles][1][:urlToImage]%>" width="230" height="151" alt=""></figure>
-									<h3><a href="<%=@news[:articles][1][:url]%>"target="_blank"><%=@news[:articles][1][:title]%></a></h3>
-									<p><%=@news[:articles][1][:description]%></p>
-								</div>
-							</div>
-							<div class="col-md-4">
-								<div class="news">
-									<div class="date"><%=Time.now.strftime('%d %B')%></div>
-									<figure class="live-camera-cover"><img src="<%=@news[:articles][2][:urlToImage]%>" width="230" height="151" alt=""></figure>
-									<h3><a href="<%=@news[:articles][2][:url]%>"target="_blank"><%=@news[:articles][2][:title]%></a></h3>
-									<p><%=@news[:articles][2][:description]%></p>
-								</div>
-							</div>
 						</div>
-					</div>
-				</div>
+                        <div class="user">
+                              <header class="user__header"> 
+                                 <p><h2 class="user__title">Welcome</h2></p>
+                              </header>
+                              
+                              <form role="form" action="/signup" method="post" class="form-signup">
+                                  <div class="form__group">
+                                     <p> <input type="text" name="username" placeholder="Username..." class="form-username form-control" id="form-username"></p>
+                                  </div>
 
-				<div class="fullwidth-block">
+                                  <div class="form__group">
+                                     <p> <input type="text" class="form-control" name="name" placeholder="Name..." class="form-username form-control" id="form-username"></p>
+                                  </div>
+
+                                  <div class="form__group">
+                                     <p> <input type="text" class="form-control" name="surname" placeholder="Surname..." class="form-username form-control" id="form-username"></p>
+                                  </div>
+                                  
+                                  <div class="form__group">
+                                      <p> <input type="email" class="form-control" name="email" placeholder="Email" class="form__input" /></p>
+                                  </div>
+                                  
+                                  <div class="form__group">
+                                      <p><input type="password" class="form-control" name="password"  placeholder="Password" class="form__input" /></p>
+                                  </div>
+                                  
+                                  <button class="btn" type="submit">Register</button>
+                              </form>
+                          </div>
+                          
+                        
+					</a>
+             </div>
+         </div>
+</div>
+
+
 					<div class="container">
 						<div class="row">
 							<div class="col-md-4">
@@ -178,8 +126,8 @@ Prefacing the CSS selectors with .ie for IE specific styles in your CSS
 							</div>
 						</div>
 					</div>
-				</div>-->
-			<!-- </main> .main-content 
+				</div>
+			</main> <!-- .main-content -->
 
 			<footer class="site-footer">
 				<div class="container">
@@ -198,29 +146,27 @@ Prefacing the CSS selectors with .ie for IE specific styles in your CSS
 								<a href="#"><i class="fa fa-pinterest"></i></a>
 							</div>
 						</div>
-					</div>-->
-<%= yield %>
+					</div>
 					
+
+
+
+
+
+
+					<p class="colophon">Copyright 2021 WeatherReal. All rights reserved</p>
+					<p>Made</span> by <a href="http://www.jcbonassin.net" target="_blank"><strong>JC Bonassin</strong></a>
 				</div>
-				</div>
-
-		
-</footer> <!-- .site-footer -->
-
-		<div class="container">
-		<p class="colophon">Copyright 2021 WeatherReal. All rights reserved</p>
-		<p>Made</span> by <a href="http://www.jcbonassin.net" target="_blank"><strong>JC Bonassin</strong></a>
-				
-
-		<footer class="branding">
-        <small>&copy; 2021 <strong>WeatherReal</strong></small>
-		</div>	
-       
-      	</footer>
+			</footer> <!-- .site-footer -->
+		</div>
 		
 		<script src="js/jquery-1.11.1.min.js"></script>
 		<script src="js/plugins.js"></script>
 		<script src="js/app.js"></script>
-  </body>
-</html>
+		
+	</body>
+
+</html><link href="/YOUR_PATH/favicon.ico" rel="icon" type="image/x-icon" />
+
+
 

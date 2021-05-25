@@ -1,0 +1,153 @@
+	<div class="hero" style="background-image: url(images/banner.png")>
+				<div class="container">
+					<form class="find-location" action="/main" method="POST">
+						<input type="text" name= "weather_location" placeholder="Find your location...">
+						<input type="submit" value="Add a new locations">
+					</form>
+				</div>
+			</div>	
+		
+			<div class="forecast-table">
+				<div class="container">
+					<div class="forecast-container">
+						<div class="today forecast">
+							<div class="forecast-header">
+								<div class="day"><%=Time.at(@weather[:current][:dt]).strftime('%A / %H:%M %p')%></div>
+								<div class="date"><%=Time.at(@weather[:current][:dt]).strftime('%d %b %Y')%></div>
+							</div> <!-- .forecast-header -->
+							<!--<% @locations.each do |location| %>
+                                <p><a href="main/<%= location.id %>"><%= location.weather_location %></a></p>
+                                <p> <a href="main/<%= location.id %>/edit"></span></a></p>
+                                <% end %>-->
+							<div class="forecast-content">
+								<div class="location"><%=@location%></div>
+								<div class="degree">
+									<div class="num"><%=@weather[:current][:temp].round%><sup>o</sup>C</div>
+									<div class="forecast-icon">
+										<div style="font-size:5rem"><%=graph_cond(@weather[:current][:weather].first[:description])%></div>
+									</div>	
+								</div>
+								<h1><p><%=@weather[:current][:weather].first[:description].capitalize%></p></h1>
+								<span><img src="images/icon-umberella.png" alt=""><%=(@weather[:hourly][1][:pop]*100).floor%>%</span>
+								<span><img src="images/icon-wind.png" alt=""><%=(@weather[:current][:wind_speed].round)%> km/h</span>
+								<span><%=graph_cond(compass(@weather[:current][:wind_deg]))%><%=compass(@weather[:current][:wind_deg])%></span>
+
+							 	<!--<% @locations.each do |location| %>
+                                <p><a href="main/<%= location.id %>"><%= location.weather_location %></a></p>
+                                <p> <a href="main/<%= location.id %>/edit"></span></a></p>
+                                <% end %>-->
+							</div>
+						</div>
+						<div class="forecast">
+							<div class="forecast-header">
+								<div class="day"><%=Time.at(@weather[:daily][1][:dt]).strftime('%A')%></div>
+							</div> <!-- .forecast-header -->
+							<div class="forecast-content">
+								<div class="forecast-icon">
+									<div style="font-size:4rem"><%=graph_cond(@weather[:daily][1][:weather].first[:description])%></div>
+								</div>
+								<div class="degree"><%=@weather[:daily][1][:temp][:day].to_i%><sup>o</sup>C</div>
+								<div class="min">H :<%=@weather[:daily][1][:temp][:max].to_i%><sup>o</sup></div>
+								<div class="min">L :<%=@weather[:daily][1][:temp][:min].to_i%><sup>o</sup></div>
+							</div>
+						</div>
+						<div class="forecast">
+							<div class="forecast-header">
+								<div class="day"><%=Time.at(@weather[:daily][2][:dt]).strftime('%A')%></div>
+							</div> <!-- .forecast-header -->
+							<div class="forecast-content">
+								<div class="forecast-icon">
+									<div style="font-size:4rem"><%=graph_cond(@weather[:daily][2][:weather].first[:description])%></div>
+								</div>
+								<div class="degree"><%=@weather[:daily][2][:temp][:day].to_i%><sup>o</sup>C</div>
+								<div class="min">H :<%=@weather[:daily][2][:temp][:max].to_i%><sup>o</sup></div>
+								<div class="min">L :<%=@weather[:daily][2][:temp][:min].to_i%><sup>o</sup></div>
+							</div>
+						</div>
+						<div class="forecast">
+							<div class="forecast-header">
+								<div class="day"><%=Time.at(@weather[:daily][3][:dt]).strftime('%A')%></div>
+							</div> <!-- .forecast-header -->
+							<div class="forecast-content">
+								<div class="forecast-icon">
+									<div style="font-size:4rem"><%=graph_cond(@weather[:daily][3][:weather].first[:description])%></div>
+								</div>
+								<div class="degree"><%=@weather[:daily][3][:temp][:day].to_i%><sup>o</sup>C</div>
+								<div class="min">H :<%=@weather[:daily][3][:temp][:max].to_i%><sup>o</sup></div>
+								<div class="min">L :<%=@weather[:daily][3][:temp][:min].to_i%><sup>o</sup></div>
+							</div>
+						</div>
+						<div class="forecast">
+							<div class="forecast-header">
+								<div class="day"><%=Time.at(@weather[:daily][4][:dt]).strftime('%A')%></div>
+							</div> <!-- .forecast-header -->
+							<div class="forecast-content">
+								<div class="forecast-icon">
+									<div style="font-size:4rem"><%=graph_cond(@weather[:daily][4][:weather].first[:description])%></div>
+								</div>
+								<div class="degree"><%=@weather[:daily][4][:temp][:day].to_i%><sup>o</sup>C</div>
+								<div class="min">H :<%=@weather[:daily][4][:temp][:max].to_i%><sup>o</sup></div>
+								<div class="min">L :<%=@weather[:daily][4][:temp][:min].to_i%><sup>o</sup></div>
+							</div>
+						</div>
+						<div class="forecast">
+							<div class="forecast-header">
+								<div class="day"><%=Time.at(@weather[:daily][5][:dt]).strftime('%A')%></div>
+							</div> <!-- .forecast-header -->
+							<div class="forecast-content">
+								<div class="forecast-icon">
+									<div style="font-size:4rem"><%=graph_cond(@weather[:daily][5][:weather].first[:description])%></div>
+								</div>
+								<div class="degree"><%=@weather[:daily][5][:temp][:day].to_i%><sup>o</sup>C</div>
+								<div class="min">H :<%=@weather[:daily][5][:temp][:max].to_i%><sup>o</sup></div>
+								<div class="min">L :<%=@weather[:daily][5][:temp][:min].to_i%><sup>o</sup></div>
+							</div>
+						</div>
+						<div class="forecast">
+							<div class="forecast-header">
+								<div class="day"><%=Time.at(@weather[:daily][6][:dt]).strftime('%A')%></div>
+							</div> <!-- .forecast-header -->
+							<div class="forecast-content">
+								<div class="forecast-icon">
+									<div style="font-size:4rem"><%=graph_cond(@weather[:daily][6][:weather].first[:description])%></div>
+								</div>
+								<div class="degree"><%=@weather[:daily][6][:temp][:day].to_i%><sup>o</sup>C</div>
+								<div class="min">H :<%=@weather[:daily][6][:temp][:max].to_i%><sup>o</sup></div>
+								<div class="min">L :<%=@weather[:daily][6][:temp][:min].to_i%><sup>o</sup></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<main class="main-content">
+				<div class="fullwidth-block">
+					<div class="container">
+						<h2 class="section-title">Your Locations</h2>	
+						<div class="row">
+						<% @locations.each do |location| %>
+							<div class="col-md-3 col-sm-6">
+								<div class="live-camera">
+									<p><a href="main/<%=location.id%>"target=""><img src="images/live-camera-1.jpg"/></a></p>
+									<h3 class="location"><a href="main/<%= location.id %>"target=""><%=location.weather_location.capitalize%></a></h3>
+									<small class="date">8 oct, 8:00AM</small>
+								</div>
+							</div>
+							<% end %>
+					    </div>
+					</div>
+
+				<!--	<div class="container">
+						<div class="styleform11">
+			    		   <form method="post" action="/main/delete">
+  			    		   <input id="hidden" type="hidden" name="_method" value="DELETE">
+  			    		   <input type="submit" value="Delete Locations">
+			    		   </form>
+			 			</div>
+					</div>-->
+	
+
+			<!--<% @locations.each do |location| %>
+                <p><a href="main/<%= location.id %>"><%= location.weather_location %></a></p>
+                <p> <a href="main/<%= location.id %>/edit"></span></a></p>
+                <% end %>-->		

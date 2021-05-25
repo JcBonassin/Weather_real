@@ -1,11 +1,3 @@
-<!-- Add this to your HTML
-Prefacing the CSS selectors with .ie for IE specific styles in your CSS
- -->
-<!--[if IEMobile 7 ]> <html dir="ltr" lang="en-US"class="no-js iem7"> <![endif]-->
-<!--[if lt IE 7 ]> <html dir="ltr" lang="en-US" class="no-js ie6 oldie"> <![endif]-->
-<!--[if IE 7 ]>    <html dir="ltr" lang="en-US" class="no-js ie7 oldie"> <![endif]-->
-<!--[if IE 8 ]>    <html dir="ltr" lang="en-US" class="no-js ie8 oldie"> <![endif]-->
-<!--[if (gte IE 9)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html dir="ltr" lang="en-US" class="no-js"><!--<![endif]-->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -27,12 +19,12 @@ Prefacing the CSS selectors with .ie for IE specific styles in your CSS
 		<script src="js/ie-support/html5.js"></script>
 		<script src="js/ie-support/respond.js"></script>
 		<![endif]-->
+   
 
 	</head>
 
 
 	<body>
-		
 		<div class="site-content">
 			<div class="site-header">
 				<div class="container">
@@ -49,10 +41,17 @@ Prefacing the CSS selectors with .ie for IE specific styles in your CSS
 						<button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
 						<ul class="menu">
 							<!-- <li class="menu-item current-menu-item"><a href="index.html">Home</a></li> -->
-							<li class="menu-item"><a href="/login">Login</a></li>
-							<li class="menu-item"><a href="/signup">SignUp</a></li>
-							<li class="menu-item"><a href="photos.html">Photos</a></li>
-							<li class="menu-item"><a href="contact.html">Contact</a></li>
+							<h1>Login to Weather Be</h1>
+                            <form method="post" action="/login">
+                            <input type="text" name="username" placeholder="Username..." class="form-username form-control" id="form-username">
+                            <input type="password" name="password" placeholder="Password..." class="form-password form-control" id="form-password">
+                            <!--<input type="text" name="username" placeholder="Username:">-->
+                            <!--<input type="text" name="password" placeholder="Password:">-->
+                            <input type="submit" value="Login">
+                            </form>
+							<!-- <li class="menu-item"><a href="live-cameras.html">SignUp</a></li>-->
+							<!-- <li class="menu-item"><a href="photos.html">Photos</a></li>-->
+							<!-- <li class="menu-item"><a href="contact.html">Contact</a></li>-->
 						</ul> <!-- .menu -->
 					</div> <!-- .main-navigation -->
 
@@ -61,7 +60,10 @@ Prefacing the CSS selectors with .ie for IE specific styles in your CSS
 				</div>
 			</div> <!-- .site-header -->
 
+
+
 			<div class="hero" style="background-image: url(images/banner.png")>
+            
 				<div class="container">
 					<form action="/" class="find-location" method="POST">
 						<input type="text" name= "weather_location" placeholder="Find your location...">
@@ -174,40 +176,8 @@ Prefacing the CSS selectors with .ie for IE specific styles in your CSS
 					</div>
 				</div>
 			</div>
-			
-				<div class="fullwidth-block" data-bg-color="#262936">
-					<div class="container">
-                    <p><h1>BBC News</h1></p>
-						<div class="row">
-							<div class="col-md-4">
-								<div class="news">
-									<div class="date"><%=Time.now.strftime('%d %B')%></div>
-									<figure class="live-camera-cover"><img src="<%=@news[:articles][0][:urlToImage]%>" width="230" height="151" alt=""></figure>
-									<h3><a href="<%=@news[:articles][0][:url]%>"target="_blank"><%=@news[:articles][0][:title]%></a></h3>
-									<p><%=@news[:articles][0][:description]%></p>
-								</div>
-							</div>
-							<div class="col-md-4">
-								<div class="news">
-									<div class="date"><%=Time.now.strftime('%d %B')%></div>
-									<figure class="live-camera-cover"><img src="<%=@news[:articles][1][:urlToImage]%>" width="230" height="151" alt=""></figure>
-									<h3><a href="<%=@news[:articles][1][:url]%>"target="_blank"><%=@news[:articles][1][:title]%></a></h3>
-									<p><%=@news[:articles][1][:description]%></p>
-								</div>
-							</div>
-							<div class="col-md-4">
-								<div class="news">
-									<div class="date"><%=Time.now.strftime('%d %B')%></div>
-									<figure class="live-camera-cover"><img src="<%=@news[:articles][2][:urlToImage]%>" width="230" height="151" alt=""></figure>
-									<h3><a href="<%=@news[:articles][2][:url]%>"target="_blank"><%=@news[:articles][2][:title]%></a></h3>
-									<p><%=@news[:articles][2][:description]%></p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
 
-				<div class="fullwidth-block">
+            <div class="fullwidth-block">
 					<div class="container">
 						<div class="row">
 							<div class="col-md-4">
@@ -256,6 +226,8 @@ Prefacing the CSS selectors with .ie for IE specific styles in your CSS
 						</div>
 					</div>
 				</div>
+			
+				
 			</main> <!-- .main-content -->
 
 			<footer class="site-footer">

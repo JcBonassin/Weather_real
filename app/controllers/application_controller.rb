@@ -7,16 +7,34 @@ class ApplicationController < Sinatra::Base
     set :public_folder, 'public'
     set :views, 'app/views'
     enable :sessions
-    set :session_secret, "weather_secret"
+    set :session_secret, "weather_be"
     register Sinatra::Flash
   end
 
   get "/" do
-    @weather = API.auto_search
-    @location = API.location_name
-    @news = API.news
-    erb :index
+    if !logged_in?
+      @weather = API.auto_search
+      @location = API.location_name
+      @news = API.news 
+      erb :index, :layout => :'not_login'
+    else 
+      redirect_to_main
+    end 
   end
+
+  post '/' do 
+    weather_location = params[:weather_location]
+    @weather = API.search_location(weather_location)
+    @location = params[:weather_location]
+    @news = API.news
+    if params[:weather_location].empty?
+        flash[:message] = "Please don't leave blank content"
+        redirect to "/" 
+    end
+    erb :index, :layout => :'not_login'
+    end
+
+
 
 
   helpers do
@@ -35,11 +53,15 @@ class ApplicationController < Sinatra::Base
       end 
     end
 
-    def redirect_not_logged_in
+    def redirect_not_login
       if !logged_in?
-        redirect "/login"
+        redirect "/"
       end
     end
+
+    def redirect_to_main
+        redirect to "/main"
+      end
      
     def compass(deg)
       value = ((deg.to_f / 22.5) + 0.5).floor

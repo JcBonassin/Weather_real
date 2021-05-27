@@ -241,16 +241,31 @@ Prefacing the CSS selectors with .ie for IE specific styles in your CSS
 							</div>
 							<div class="col-md-4">
 								<h2 class="section-title">Awesome Photos</h2>
-								<div class="photo-grid">
+								<div class="photo-grid1">
 									<a href="#"><img src="<%=@photos[:results][1][:urls][:thumb]%>" alt="#"></a>
 									<a href="#"><img src="<%=@photos[:results][2][:urls][:thumb]%>" alt="#"></a>
 									<a href="#"><img src="<%=@photos[:results][3][:urls][:thumb]%>" alt="#"></a>
-									
+									<a href="#"><img src="<%=@photos[:results][0][:urls][:thumb]%>" alt="#"></a>
+									<a href="#"><img src="<%=@photos[:results][5][:urls][:thumb]%>" alt="#"></a>
+									<a href="#"><img src="<%=@photos[:results][6][:urls][:thumb]%>" alt="#"></a>
+									<a href="#"><img src="<%=@photos[:results][7][:urls][:thumb]%>" alt="#"></a>
+									<a href="#"><img src="<%=@photos[:results][8][:urls][:thumb]%>" alt="#"></a>
+									<a href="#"><img src="<%=@photos[:results][9][:urls][:thumb]%>" alt="#"></a>
+									<a href="#"><img src="<%=@photos[:results][4][:urls][:thumb]%>" alt="#"></a>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
+<style>
+.photo-grid1 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-auto-rows: 200px;
+  grid-gap: 5px;
+  grid-auto-flow: dense;
+}
+</style>
 			</main> <!-- .main-content -->
 
 			<footer class="site-footer">
@@ -275,6 +290,7 @@ Prefacing the CSS selectors with .ie for IE specific styles in your CSS
 					<p class="colophon">Copyright 2021 WeatherReal. All rights reserved</p>
 					<p>Made</span> by <a href="http://www.jcbonassin.net" target="_blank"><strong>JC Bonassin</strong></a>
 				</div>
+				
 			</footer> <!-- .site-footer -->
 		</div>
 		

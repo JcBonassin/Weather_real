@@ -33,11 +33,39 @@ Prefacing the CSS selectors with .ie for IE specific styles in your CSS
 
 	<body>
 
-	<% flash.keys.each do |type| %>
-          <div data-alert class="flash alert alert-<%= type %> alert-box radius">
-            <%= flash[type] %>
-          </div>
-        <% end %>
+	<div class="container">
+		<div class="flash">
+		   <% if flash[:message] %>
+           <h3 style="color:white;"><%= flash[:message] %></h3>
+      	   <% end %>
+      	   <% if flash[:errors] %>
+           <h3 style="color:red;"><%= flash[:errors] %></h3>
+      	   <% end %>
+		</div>
+	</div>
+
+	<style>
+
+	.flash {
+  	float: left;
+	width: 75%;
+	padding-top: 25px;
+	}
+	.flash  h3 { margin-top: 0; color: #fff; }
+	.flash  p { opacity: 0.8; color: #fff; }
+
+    #animals{
+      overflow: hidden;
+      padding:0;
+      li{
+        float:left;
+        list-style:none;
+        margin: 0 10px 0 0
+      }
+    }
+	</style>
+
+
 		<%= yield %>
 			</footer> <!-- .site-footer -->
 		</div>

@@ -32,6 +32,29 @@ Prefacing the CSS selectors with .ie for IE specific styles in your CSS
 
 
 	<body>
+
+	<div class="container">
+		<div class="flash">
+		   <% if flash[:message] %>
+           <h3 style="color:white;"><%= flash[:message] %></h3>
+      	   <% end %>
+      	   <% if flash[:errors] %>
+           <h3 style="color:red;"><%= flash[:errors] %></h3>
+      	   <% end %>
+		</div>
+	</div>
+
+	<style>
+
+	.flash {
+  	float: left;
+	width: 75%;
+	padding-top: 25px;
+	}
+	.flash  h3 { margin-top: 0; color: #fff; }
+	.flash  p { opacity: 0.8; color: #fff; }
+    }
+	</style>
 		
 		<div class="site-content">
 			<div class="site-header">
@@ -46,7 +69,7 @@ Prefacing the CSS selectors with .ie for IE specific styles in your CSS
                               <header class="user__header"> 
                                  <p><h2 class="user__title">Welcome</h2></p>
                               </header>
-                              
+                              <div class="container">
                               <form role="form" action="/signup" method="post" class="form-signup">
                                   <div class="form__group">
                                      <p> <input type="text" name="username" placeholder="Username..." class="form-username form-control" id="form-username"></p>
@@ -70,16 +93,14 @@ Prefacing the CSS selectors with .ie for IE specific styles in your CSS
                                   
                                   <button class="btn" type="submit">Register</button>
                               </form>
-                          </div>
-                          
-                        
+							  </div>
+                        </div>     
 					</a>
-             </div>
-         </div>
-</div>
+             	</div>
+        	</div>
+		</div>
 
-
-					<div class="container">
+				<!--	<div class="container">
 						<div class="row">
 							<div class="col-md-4">
 								<h2 class="section-title">Application features</h2>
@@ -133,10 +154,10 @@ Prefacing the CSS selectors with .ie for IE specific styles in your CSS
 				<div class="container">
 					<div class="row">
 						<div class="col-md-8">
-							<form action="#" class="subscribe-form">
+						<!--	<form action="#" class="subscribe-form">
 								<input type="text" placeholder="Enter your email to subscribe...">
 								<input type="submit" value="Subscribe">
-							</form>
+							</form>-->
 						</div>
 						<div class="col-md-3 col-md-offset-1">
 							<div class="social-links">
@@ -147,23 +168,12 @@ Prefacing the CSS selectors with .ie for IE specific styles in your CSS
 							</div>
 						</div>
 					</div>
-					
-
-
-
-
-
 
 					<p class="colophon">Copyright 2021 WeatherReal. All rights reserved</p>
 					<p>Made</span> by <a href="http://www.jcbonassin.net" target="_blank"><strong>JC Bonassin</strong></a>
 				</div>
 			</footer> <!-- .site-footer -->
-		</div>
-		
-		<script src="js/jquery-1.11.1.min.js"></script>
-		<script src="js/plugins.js"></script>
-		<script src="js/app.js"></script>
-		
+		</div>	
 	</body>
 
 </html><link href="/YOUR_PATH/favicon.ico" rel="icon" type="image/x-icon" />

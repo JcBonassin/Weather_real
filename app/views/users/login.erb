@@ -1,4 +1,13 @@
 
+<!-- Add this to your HTML
+Prefacing the CSS selectors with .ie for IE specific styles in your CSS
+ -->
+<!--[if IEMobile 7 ]> <html dir="ltr" lang="en-US"class="no-js iem7"> <![endif]-->
+<!--[if lt IE 7 ]> <html dir="ltr" lang="en-US" class="no-js ie6 oldie"> <![endif]-->
+<!--[if IE 7 ]>    <html dir="ltr" lang="en-US" class="no-js ie7 oldie"> <![endif]-->
+<!--[if IE 8 ]>    <html dir="ltr" lang="en-US" class="no-js ie8 oldie"> <![endif]-->
+<!--[if (gte IE 9)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html dir="ltr" lang="en-US" class="no-js"><!--<![endif]-->
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -25,6 +34,31 @@
 
 
 	<body>
+
+	<div class="container">
+		<div class="flash">
+		   <% if flash[:message] %>
+           <h3 style="color:white;"><%= flash[:message] %></h3>
+      	   <% end %>
+      	   <% if flash[:errors] %>
+           <h3 style="color:red;"><%= flash[:errors] %></h3>
+      	   <% end %>
+		</div>
+	</div>
+
+	<style>
+
+	.flash {
+  	float: left;
+	width: 75%;
+	padding-top: 25px;
+	}
+	.flash  h3 { margin-top: 0; color: #fff; }
+	.flash  p { opacity: 0.8; color: #fff; }
+    }
+	</style>
+
+
 		<div class="site-content">
 			<div class="site-header">
 				<div class="container">
@@ -177,7 +211,7 @@
 				</div>
 			</div>
 
-            <div class="fullwidth-block">
+         <!--  <div class="fullwidth-block">
 					<div class="container">
 						<div class="row">
 							<div class="col-md-4">
@@ -252,13 +286,7 @@
 					<p class="colophon">Copyright 2021 WeatherReal. All rights reserved</p>
 					<p>Made</span> by <a href="http://www.jcbonassin.net" target="_blank"><strong>JC Bonassin</strong></a>
 				</div>
-			</footer> <!-- .site-footer -->
-		</div>
-		
-		<script src="js/jquery-1.11.1.min.js"></script>
-		<script src="js/plugins.js"></script>
-		<script src="js/app.js"></script>
-		
+	</footer>	
 	</body>
 
 </html><link href="/YOUR_PATH/favicon.ico" rel="icon" type="image/x-icon" />

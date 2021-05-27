@@ -26,6 +26,7 @@ class ApplicationController < Sinatra::Base
   post '/' do 
     weather_location = params[:weather_location]
     @weather = API.search_location(weather_location)
+    @photos = API.search_location_photo(weather_location)
     @location = params[:weather_location]
     @news = API.news
     if params[:weather_location].empty?

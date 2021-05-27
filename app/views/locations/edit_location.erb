@@ -140,6 +140,160 @@
 				}
 			</style>	
 
+
+
+					<% @locations.each do |location| %>
+							<div class="col-md-3 col-sm-6">
+								<div class="live-camera">
+								<%=API.search_location(location.weather_location)[:timezone]%>
+									<p><a href="main/<%=location.id%>"target=""><img src="images/live-camera-1.jpg"/></a></p>
+									<h3 class="location"><a href="main/<%= location.id %>"target=""><%=location.weather_location.capitalize%></a></h3>
+									<small class="date">8 oct, 8:00AM</small>
+								</div>
+							</div>
+							<% end %>
+
+			
+			<div class="forecast-table">
+				<div class="container">
+					<div class="forecast-container">
+						<div class="today forecast">
+							<div class="forecast-header">
+							<% @locations.each do |location| %>
+								<div class="day"><%=Time.at(API.search_location(location.weather_location)[:current][:dt]).strftime('%A / %H:%M %p')%></div>
+								<div class="date"><%=Time.at(API.search_location(location.weather_location)[:current][:dt]).strftime('%d %b %Y')%></div>
+							</div> <!-- .forecast-header -->
+							<!--<% @locations.each do |location| %>
+                                <p><a href="main/<%= location.id %>"><%= location.weather_location %></a></p>
+                                <p> <a href="main/<%= location.id %>/edit"></span></a></p>
+                                <% end %>-->
+							<div class="forecast-content">
+								<div class="location"><%=location.weather_location%></div>
+								<div class="degree">
+									<div class="num"><%=API.search_location(location.weather_location)[:current][:temp].round%><sup>o</sup>C</div>
+									<div class="forecast-icon">
+										<div style="font-size:5rem"><%=graph_cond(API.search_location(location.weather_location)[:current][:weather].first[:description])%></div>
+									</div>	
+								</div>
+								<h1><p><%=API.search_location(location.weather_location)[:current][:weather].first[:description].capitalize%></p></h1>
+								<span><img src="images/icon-umberella.png" alt=""><%=(API.search_location(location.weather_location)[:hourly][1][:pop]*100).floor%>%</span>
+								<span><img src="images/icon-wind.png" alt=""><%=(API.search_location(location.weather_location)[:current][:wind_speed].round)%> km/h</span>
+								<span><%=graph_cond(compass(@weather[:current][:wind_deg]))%><%=compass(API.search_location(location.weather_location)[:current][:wind_deg])%></span>
+
+							 	<!--<% @locations.each do |location| %>
+                                <p><a href="main/<%= location.id %>"><%= location.weather_location %></a></p>
+                                <p> <a href="main/<%= location.id %>/edit"></span></a></p>
+                                <% end %>-->
+							</div>
+						</div>
+						<div class="forecast">
+							<div class="forecast-header">
+								<div class="day"><%=Time.at(API.search_location(location.weather_location)[:daily][1][:dt]).strftime('%A')%></div>
+							</div> <!-- .forecast-header -->
+							<div class="forecast-content">
+								<div class="forecast-icon">
+									<div style="font-size:4rem"><%=graph_cond(@weather[:daily][1][:weather].first[:description])%></div>
+								</div>
+								<div class="degree"><%=API.search_location(location.weather_location)[:daily][1][:temp][:day].to_i%><sup>o</sup>C</div>
+								<div class="min">H :<%=API.search_location(location.weather_location)[:daily][1][:temp][:max].to_i%><sup>o</sup></div>
+								<div class="min">L :<%=API.search_location(location.weather_location)[:daily][1][:temp][:min].to_i%><sup>o</sup></div>
+							</div>
+						</div>
+						<div class="forecast">
+							<div class="forecast-header">
+								<div class="day"><%=Time.at(API.search_location(location.weather_location)[:daily][2][:dt]).strftime('%A')%></div>
+							</div> <!-- .forecast-header -->
+							<div class="forecast-content">
+								<div class="forecast-icon">
+									<div style="font-size:4rem"><%=graph_cond(API.search_location(location.weather_location)[:daily][2][:weather].first[:description])%></div>
+								</div>
+								<div class="degree"><%=API.search_location(location.weather_location)[:daily][2][:temp][:day].to_i%><sup>o</sup>C</div>
+								<div class="min">H :<%=API.search_location(location.weather_location)[:daily][2][:temp][:max].to_i%><sup>o</sup></div>
+								<div class="min">L :<%=API.search_location(location.weather_location)[:daily][2][:temp][:min].to_i%><sup>o</sup></div>
+							</div>
+						</div>
+						<div class="forecast">
+							<div class="forecast-header">
+								<div class="day"><%=Time.at(API.search_location(location.weather_location)[:daily][3][:dt]).strftime('%A')%></div>
+							</div> <!-- .forecast-header -->
+							<div class="forecast-content">
+								<div class="forecast-icon">
+									<div style="font-size:4rem"><%=graph_cond(API.search_location(location.weather_location)[:daily][3][:weather].first[:description])%></div>
+								</div>
+								<div class="degree"><%=API.search_location(location.weather_location)[:daily][3][:temp][:day].to_i%><sup>o</sup>C</div>
+								<div class="min">H :<%=API.search_location(location.weather_location)[:daily][3][:temp][:max].to_i%><sup>o</sup></div>
+								<div class="min">L :<%=API.search_location(location.weather_location)[:daily][3][:temp][:min].to_i%><sup>o</sup></div>
+							</div>
+						</div>
+						<div class="forecast">
+							<div class="forecast-header">
+								<div class="day"><%=Time.at(API.search_location(location.weather_location)[:daily][4][:dt]).strftime('%A')%></div>
+							</div> <!-- .forecast-header -->
+							<div class="forecast-content">
+								<div class="forecast-icon">
+									<div style="font-size:4rem"><%=graph_cond(API.search_location(location.weather_location)[:daily][4][:weather].first[:description])%></div>
+								</div>
+								<div class="degree"><%=API.search_location(location.weather_location)[:daily][4][:temp][:day].to_i%><sup>o</sup>C</div>
+								<div class="min">H :<%=API.search_location(location.weather_location)[:daily][4][:temp][:max].to_i%><sup>o</sup></div>
+								<div class="min">L :<%=API.search_location(location.weather_location)[:daily][4][:temp][:min].to_i%><sup>o</sup></div>
+							</div>
+						</div>
+						<div class="forecast">
+							<div class="forecast-header">
+								<div class="day"><%=Time.at(API.search_location(location.weather_location)[:daily][5][:dt]).strftime('%A')%></div>
+							</div> <!-- .forecast-header -->
+							<div class="forecast-content">
+								<div class="forecast-icon">
+									<div style="font-size:4rem"><%=graph_cond(API.search_location(location.weather_location)[:daily][5][:weather].first[:description])%></div>
+								</div>
+								<div class="degree"><%=API.search_location(location.weather_location)[:daily][5][:temp][:day].to_i%><sup>o</sup>C</div>
+								<div class="min">H :<%=API.search_location(location.weather_location)[:daily][5][:temp][:max].to_i%><sup>o</sup></div>
+								<div class="min">L :<%=API.search_location(location.weather_location)[:daily][5][:temp][:min].to_i%><sup>o</sup></div>
+							</div>
+						</div>
+						<div class="forecast">
+							<div class="forecast-header">
+								<div class="day"><%=Time.at(API.search_location(location.weather_location)[:daily][6][:dt]).strftime('%A')%></div>
+							</div> <!-- .forecast-header -->
+							<div class="forecast-content">
+								<div class="forecast-icon">
+									<div style="font-size:4rem"><%=graph_cond(API.search_location(location.weather_location)[:daily][6][:weather].first[:description])%></div>
+								</div>
+								<div class="degree"><%=API.search_location(location.weather_location)[:daily][6][:temp][:day].to_i%><sup>o</sup>C</div>
+								<div class="min">H :<%=API.search_location(location.weather_location)[:daily][6][:temp][:max].to_i%><sup>o</sup></div>
+								<div class="min">L :<%=API.search_location(location.weather_location)[:daily][6][:temp][:min].to_i%><sup>o</sup></div>
+							</div>
+						</div>
+						<% end %>
+					</div>
+				</div>
+			</div>
+
+
+			<div class="fullwidth-block">
+				<div class="container1">
+				<div class="row">
+					<div class="forecast-container">
+						<div class="today forecast">
+							<div class="forecast-header">		
+							</div> <!-- .forecast-header -->	
+							<% @locations.each do |location| %>
+							<div class="forecast-content">
+								<div class="location"><%=location.weather_location.capitalize%></div>
+								<div class="degree">
+									<div class="num"><%=API.search_location(location.weather_location)[:current][:temp].round%><sup>o</sup>C</div>
+									<div class="forecast-icon">
+										<div style="font-size:5rem"><%=graph_cond(API.search_location(location.weather_location)[:current][:weather].first[:description])%></div>
+									</div>	
+								</div>
+								<h1><p><%=API.search_location(location.weather_location)[:current][:weather].first[:description].capitalize%></p></h1>
+								<span><img src="images/icon-umberella.png" alt=""><%=(API.search_location(location.weather_location)[:hourly][1][:pop]*100).floor%>%</span>
+								<span><img src="images/icon-wind.png" alt=""><%=(API.search_location(location.weather_location)[:current][:wind_speed].round)%> km/h</span>
+								<span><%=graph_cond(compass(API.search_location(location.weather_location)[:current][:wind_deg]))%><%=compass(API.search_location(location.weather_location)[:current][:wind_deg])%></span>	 
+							</div>
+							<% end %>
+						</div>
+
 				
 			
 

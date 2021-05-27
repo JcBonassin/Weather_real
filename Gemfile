@@ -17,7 +17,7 @@ gem 'open-weather'
 gem 'dotenv'
 gem 'geocoder', '~> 1.6', '>= 1.6.6'
 gem 'sinatra-flash'
-gem 'bootstrap', '~> 5.0'
+gem 'uri'
 
 
 group :test do

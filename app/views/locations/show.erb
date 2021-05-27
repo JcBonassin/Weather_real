@@ -1,11 +1,8 @@
-		
+					
 				<div class="container">
-
-
 				<%=@weather[:timezone]%>
-				<%=@weather[:lon]%>
-				<%=@weather[:lat]%>
-			
+			<!--	<%=@locations.weather_location.capitalize%>
+				<%=@weather = API.search_location(params[:id])%>-->
 					<div class="styleform">
 			           <form method="post" action="/main/<%=@locations.id%>">
   	                   <input id="hidden" type="hidden" name="_method" value="PATCH">
@@ -128,7 +125,7 @@
 			       </form>
 			 	</div>
 			</div>
-
+					
 			<style>
 			.styleform {
 				text-align: right;

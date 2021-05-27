@@ -6,6 +6,7 @@ class LocationsController < ApplicationController
           @location = API.location_name
           @news = API.news 
           @locations = current_user.locations.all
+          @photos = API.location_photo
           erb :'locations/main'
         else
           redirect to '/'
@@ -24,6 +25,7 @@ class LocationsController < ApplicationController
             weather_location = params[:weather_location]
             @weather = API.search_location(weather_location)
             @location = params[:weather_location]
+            @photos = API.search_location_photo(weather_location)
             @news = API.news
              # if @weather == nil
              #   flash[:message] = "Location Error. Please try again"
@@ -31,14 +33,14 @@ class LocationsController < ApplicationController
                  if params[:weather_location].empty?
                    flash[:message] = "Please don't leave blank content"
                    redirect to "/main"
-                 end 
-                 if @weather == nil
-                  flash[:message] = "Location Error. Please try again"
-                  redirect_to_main
+                 #end 
+                 #if @weather == nil
+                 # flash[:message] = "Location Error. Please try again"
+                 # redirect_to_main
                  else
                    @user = current_user
                    @locations = Location.create(weather_location:params[:weather_location], user_id:@user.id)
-                   flash[:message] = "YAY.. Success, Your locations has been added"
+                   flash[:message] = "YAY.. Success, Your locations has been succesfully added "
                    @locations.save
               #@locations = @user.locations.find_or_create_by(weather_location:params[:weather_location])
               #@locations = current_user.locations.build(weather_location:params[:weather_location])
@@ -78,14 +80,15 @@ class LocationsController < ApplicationController
             #weather_location = params[:weather_location]
             @locations = Location.find_by_id(params[:id])
             @weather = API.search_location(@locations.weather_location)
+            @photos = API.search_location_photo(@locations.weather_location)
             #@weather = API.search_location(params[:id])
             @news = API.news  
-            if @weather == nil
-              flash[:message] = "Location Error. Your entry has been deleted. Please try to add that locations again"
-              #redirect to "/main/#{params[:id]}/edit"
-              @locations.destroy
-              redirect_to_main
-            end
+            #if @weather == nil
+            #  flash[:message] = "Location Error. Your entry has been deleted. Please try to add that location again"
+            #  #redirect to "/main/#{params[:id]}/edit"
+            #  @locations.destroy
+            #  redirect_to_main
+            #end
             #@weather = API.search_location(params[:id])
             #@user = User.find(params[:id])
           erb :'locations/show'
@@ -103,40 +106,40 @@ class LocationsController < ApplicationController
  #   
  # end
 
-      get '/main/:id/edit' do
-       # if logged_in?
-          @locations = Location.find_by_id(params[:id])
-          @weather = API.search_location(@locations.weather_location)
-          @news = API.news 
-          if @weather == nil
-            flash[:message] = "Location Error. Please try again"
-            redirect to "/main/#{@locations.id}"
-          else 
-         # if @locations && @locations.user == current_user
-         #   erb :'locations/show'
-         # else
-         #   redirect to '/main'
-         # end
-        #else
-        #  redirect to '/login'
-        #end
-        erb :'locations/edit_location'
-          end
-      end
-#
+    #  get '/main/:id/edit' do
+    #   # if logged_in?
+    #      @locations = Location.find_by_id(params[:id])
+    #      @weather = API.search_location(@locations.weather_location)
+    #      @news = API.news 
+    #      if @weather == nil
+    #        flash[:message] = "Location Error. Please try again"
+    #        redirect to "/main/#{@locations.id}"
+    #      else 
+    #     # if @locations && @locations.user == current_user
+    #     #   erb :'locations/show'
+    #     # else
+    #     #   redirect to '/main'
+    #     # end
+    #    #else
+    #    #  redirect to '/login'
+    #    #end
+    #    erb :'locations/edit_location'
+    #      end
+    #  end
+
       patch '/main/:id' do
         if !params[:weather_location].empty? 
           @locations = Location.find(params[:id])
           @locations.update(weather_location:params[:weather_location])
-          @weather = API.search_location(@locations.weather_location)
+          #@weather = API.search_location(@locations.weather_location)
           @locations.save
           flash[:message] = "Your location Has Been Succesfully Updated"
           redirect to "/main/#{params[:id]}"
-        end 
-
-        if @weather == nil
-          flash[:message] = "Location Error. Please try again"
-          redirect to "/main/#{@locations.id}"
+       # end 
+#
+       # if @weather == nil
+       #   flash[:message] = "Location Error. Please try again"
+       #   redirect to "/main/#{@locations.id}"
         else
           flash[:message] = "Please Don't Leave Blank Content"
           redirect to "/main/#{params[:id]}"

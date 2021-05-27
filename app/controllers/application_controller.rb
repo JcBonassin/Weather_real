@@ -16,6 +16,7 @@ class ApplicationController < Sinatra::Base
       @weather = API.auto_search
       @location = API.location_name
       @news = API.news 
+      @photos = API.location_photo
       erb :index, :layout => :'not_login'
     else 
       redirect_to_main

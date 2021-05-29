@@ -50,9 +50,17 @@ require 'uri'
         location = results.first.city 
         self.photo(location)    
     end 
-        
+
     def self.search_location_photo(weather_location)
         results = Geocoder.search(weather_location)
+        if  results === []
+            begin
+                raise Error
+              rescue Error => e
+                puts e.message
+              end
+              return
+         end 
         location = results.first.city
         self.photo(location)  
     end 

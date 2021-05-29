@@ -81,14 +81,14 @@ class LocationsController < ApplicationController
             @locations = Location.find_by_id(params[:id])
             @weather = API.search_location(@locations.weather_location)
             @photos = API.search_location_photo(@locations.weather_location)
-            #@weather = API.search_location(params[:id])
+            # @weather = API.search_location(params[:id])
             @news = API.news  
-            #if @weather == nil
-            #  flash[:message] = "Location Error. Your entry has been deleted. Please try to add that location again"
-            #  #redirect to "/main/#{params[:id]}/edit"
-            #  @locations.destroy
-            #  redirect_to_main
-            #end
+            if (@weather == nil && @photos == nil)
+              flash[:message] = "Location Error. Your entry has been deleted. Please try to add that location again"
+              #redirect to "/main/#{params[:id]}/edit"
+              @locations.destroy
+              redirect_to_main
+            end
             #@weather = API.search_location(params[:id])
             #@user = User.find(params[:id])
           erb :'locations/show'
@@ -131,7 +131,8 @@ class LocationsController < ApplicationController
         if !params[:weather_location].empty? 
           @locations = Location.find(params[:id])
           @locations.update(weather_location:params[:weather_location])
-          #@weather = API.search_location(@locations.weather_location)
+          @weather = API.search_location(@locations.weather_location)
+          @photos = API.search_location_photo(@locations.weather_location)
           @locations.save
           flash[:message] = "Your location Has Been Succesfully Updated"
           redirect to "/main/#{params[:id]}"

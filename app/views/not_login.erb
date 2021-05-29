@@ -32,20 +32,25 @@ Prefacing the CSS selectors with .ie for IE specific styles in your CSS
 
 
 	<body>
-
-	<div class="container">
-		<div class="flash">
+		<div class="container">
+			<div class="flash" onclick=delete_flash(this)>
 		   <% if flash[:message] %>
-           <h3 style="color:white;"><%= flash[:message] %></h3>
+		   <h3 style="color:white;"><%=flash[:message]%> <button class="close-button" aria-label="Close alert" type="button" data-close><span aria-hidden="true">&times;</span></button></h3>
       	   <% end %>
-      	   <% if flash[:errors] %>
-           <h3 style="color:red;"><%= flash[:errors] %></h3>
+      	   <% if flash[:errors] %>		 
+           <h3 style="color:red;"><%=flash[:errors]%> <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></h3>
       	   <% end %>
+			 </div>
 		</div>
-	</div>
+
+       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+       <script>
+           function delete_flash(flash){
+               $(flash).parent().remove()
+           }
+       </script>
 
 	<style>
-
 	.flash {
   	float: left;
 	width: 75%;
@@ -53,17 +58,9 @@ Prefacing the CSS selectors with .ie for IE specific styles in your CSS
 	}
 	.flash  h3 { margin-top: 0; color: #fff; }
 	.flash  p { opacity: 0.8; color: #fff; }
+}
 
-    #animals{
-      overflow: hidden;
-      padding:0;
-      li{
-        float:left;
-        list-style:none;
-        margin: 0 10px 0 0
-      }
-    }
-	</style>
+</style>
 
 
 		<%= yield %>

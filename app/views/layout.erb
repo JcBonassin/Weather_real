@@ -28,6 +28,9 @@ Prefacing the CSS selectors with .ie for IE specific styles in your CSS
 		<script src="js/ie-support/respond.js"></script>
 		<![endif]-->
 
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  		<script src="/javascript/location.js"></script>
+
 		
 
   </head>
@@ -38,15 +41,22 @@ Prefacing the CSS selectors with .ie for IE specific styles in your CSS
           </div>
         <% end %>-->
 		<div class="container">
-			<div class="flash">
+			<div class="flash" onclick=delete_flash(this)>
 		   <% if flash[:message] %>
-           <h3 style="color:white;"><%= flash[:message] %></h3>
+		   <h3 style="color:white;"><%=flash[:message]%> <button class="close-button" aria-label="Close alert" type="button" data-close><span aria-hidden="true">&times;</span></button></h3>
       	   <% end %>
-      	   <% if flash[:errors] %>
-           <h3 style="color:red;"><%= flash[:errors] %></h3>
+      	   <% if flash[:errors] %>		 
+           <h3 style="color:red;"><%=flash[:errors]%> <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></h3>
       	   <% end %>
 			 </div>
 		</div>
+
+       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+       <script>
+           function delete_flash(flash){
+               $(flash).parent().remove()
+           }
+       </script>
 
 	<style>
 	.flash {
@@ -57,6 +67,7 @@ Prefacing the CSS selectors with .ie for IE specific styles in your CSS
 	.flash  h3 { margin-top: 0; color: #fff; }
 	.flash  p { opacity: 0.8; color: #fff; }
 }
+
 </style>
 
 		<div class="site-content">
@@ -89,7 +100,7 @@ Prefacing the CSS selectors with .ie for IE specific styles in your CSS
 			</div> <!-- .site-header -->
 
 			
-			CODE FOR NEWS HERE
+			<!--CODE FOR NEWS HERE-->
 
 			<!--	<div class="fullwidth-block">
 					<div class="container">
@@ -181,6 +192,7 @@ Prefacing the CSS selectors with .ie for IE specific styles in your CSS
 		
 		<script src="js/jquery-1.11.1.min.js"></script>
 		<script src="js/plugins.js"></script>
+		<script src="js/app.js"></script>
 		<script src="js/app.js"></script>
   </body>
 </html>

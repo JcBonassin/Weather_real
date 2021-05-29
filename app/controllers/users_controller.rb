@@ -56,31 +56,32 @@ class UsersController < ApplicationController
 
       get '/user/:id/edit' do
         if logged_in?
-          erb :'users/edit_user'
+          erb :'users/show_details'
         else
           redirect to '/'
         end
       end
 
      patch '/user/:id' do
-      if !params[:username].empty? && !params[:email].empty? && !params[:password].empty?
+      if !(params[:username].empty? || params[:name].empty? || params[:surname].empty? || params[:password].empty?)
         @user = User.find(params[:id])
-        @user.update(username:params[:username], email:params[:email], password:params[:password])
+        @user.update(username:params[:username], name:params[:name], surname:params[:surname], password:params[:password])
+        @user.save
         flash[:message] = "Account Updated"
         redirect to "/user/#{@user.id}"
       else
-        flash[:message] = "Please type your Password"
-        redirect to "/user/#{params[:id]}/edit"
+        flash[:errors] = "Please dont leave any empty field"
+        redirect to "/user/#{params[:id]}"
       end
     end
 
       get '/user/:id' do
-        @weather = API.auto_search
-        @location = API.location_name
-        @news = API.news
-        @photos = API.location_photo
+        #@weather = API.auto_search
+        #@location = API.location_name
+        #@news = API.news
+        #@photos = API.location_photo
         if logged_in?
-          erb :'show_details'
+          erb :'users/show_details'
         else
           redirect to '/'
         end
@@ -90,6 +91,7 @@ class UsersController < ApplicationController
         delete '/user/:id/delete' do
           if logged_in?
             current_user.delete
+            flash[:errors] = "Your account has been deleted. Bye"
             redirect to "/logout"
           else
             redirect to '/'
@@ -99,7 +101,8 @@ class UsersController < ApplicationController
 
       get '/logout' do
         if logged_in?
-          session.destroy
+          session.clear
+          redirect "/login"
         end 
           redirect to '/'
       end  

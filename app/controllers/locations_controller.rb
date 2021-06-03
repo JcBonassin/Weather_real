@@ -27,7 +27,7 @@ class LocationsController < ApplicationController
             @weather = API.search_location(weather_location)
             @location = params[:weather_location]
             @photos = API.search_location_photo(weather_location)
-            @photosf = API.search_location_photo_flickr(weather_location)
+            #@photosf = API.search_location_photo_flickr(weather_location)
             @news = API.news
              # if @weather == nil
              #   flash[:message] = "Location Error. Please try again"

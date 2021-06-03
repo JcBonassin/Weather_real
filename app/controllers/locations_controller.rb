@@ -109,6 +109,7 @@ class LocationsController < ApplicationController
      #   end
 
       get '/main/:id' do
+        if logged_in?
             #weather_location = params[:weather_location]
             @locations = Location.find_by_id(params[:id])
             @weather = API.search_location(@locations.weather_location)
@@ -123,9 +124,11 @@ class LocationsController < ApplicationController
             #end
             #@weather = API.search_location(params[:id])
             #@user = User.find(params[:id])
+            # end 
           erb :'locations/show'
-           # end 
-        
+        else
+          redirect to '/'
+        end 
       end
 
  #     get '/main/all' do

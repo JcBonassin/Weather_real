@@ -125,13 +125,18 @@
 						<% @locations.each do |location| %>
 							<div class="col-md-3 col-sm-6">
 								<div class="live-camera">
-								<%=API.search_location(location.weather_location)[:timezone]%>
-									<p><a href="main/<%=location.id%>"target=""><img src="<%=API.search_location_photo(location.weather_location)[:results][1][:urls][:thumb]%>"/></a></p>
-									<h3 class="location"><a href="main/<%= location.id %>"target=""><%=location.weather_location.capitalize%></a></h3>
-									<small class="date">8 oct, 8:00AM</small>
+								    	<%=API.search_location(location.weather_location)[:timezone]%>
+										<p><a href="main/<%=location.id%>"target=""><img src=<%=API.search_location_photo_flickr(location.weather_location)%> /></a></p>
+										<h3 class="location"><a href="main/<%= location.id %>"target=""><%=location.weather_location.capitalize%></a></h3>
+										<small class="date"><%=Time.at(API.search_location(location.weather_location)[:current][:dt]).strftime('%A %d %b %Y')%></small>		
 								</div>
 							</div>
 							<% end %>
+									<div class="container">
+										<% if (@locations.blank?) %>
+  										<h1 class="section-title" style="color:red;"> You have no Locations yet.</h1>
+										<% end %>
+									</div>
 					    </div>
 					</div>
 			

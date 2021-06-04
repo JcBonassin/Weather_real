@@ -35,17 +35,16 @@ class LocationsController < ApplicationController
             if !params[:weather_location].empty?  
               @user = current_user
               @locations = Location.create(weather_location:params[:weather_location], user_id:@user.id)
-                 if (@weather == nil && @photos == nil)
-                   flash[:errors] = "Location Error. Your entry has been deleted. Please try to add a valid location again"
+                 if (@weather == nil && @photos == nil || @photos == {:total=>0, :total_pages=>0, :results=>[]})
+                   flash[:errors] = "Location Error. Please try to add a valid location again"
                     @locations.destroy
                     redirect_to_main
-                      if @photos == 0
-                        flash[:errors] = "No photos found for this location"
-                        redirect_to_main
-                      end
+                  elsif Location.count >= 200
+                    flash[:errors] = "Sorry. You can only add a Max of 4 locations. Please update or delete one of them"
+                    redirect_to_main
                  else
                    flash[:message] = "Your location Has Been Succesfully added. Please click on the location link for more info"
-                   @locations.save
+                   @locations.save     
                    redirect_to_main
                  end 
               else 

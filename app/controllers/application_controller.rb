@@ -29,8 +29,13 @@ class ApplicationController < Sinatra::Base
     @photos = API.search_location_photo(weather_location)
     @location = params[:weather_location]
     @news = API.news
-    if params[:weather_location].empty?
-        flash[:message] = "Please don't leave blank content"
+    if !params[:weather_location].empty?
+        if (@weather == nil && @photos == nil || @photos == {:total=>0, :total_pages=>0, :results=>[]}) 
+        flash[:errors] = "Location Error. Your entry has been deleted. Please try to add a valid location again"
+        redirect to "/"   
+        end
+    else
+        flash[:errors] = "Please don't leave blank content"
         redirect to "/" 
     end
     erb :index, :layout => :'not_login'

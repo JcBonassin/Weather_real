@@ -18,7 +18,7 @@ class UsersController < ApplicationController
       redirect to '/signup' 
     else
       @user = User.new(:username => params[:username], :name => params[:name], :surname => params[:surname], :email => params[:email], :password => params[:password])
-      flash[:message] = "You have succesfully signup."
+      flash[:message] = "You have successfully signed up in to Weather Be."
       @user.save
       session[:user_id] = @user.id
       redirect_to_main
@@ -40,7 +40,7 @@ class UsersController < ApplicationController
       post '/login' do
         user = User.find_by(:username => params[:username])
         if user && user.authenticate(params[:password])
-          flash[:message] = "You have succesfully login."
+          flash[:message] = "You Have Successfully Logged in to Weather Be."
           session[:user_id] = user.id
           redirect_to_main
         else
@@ -91,7 +91,7 @@ class UsersController < ApplicationController
         delete '/user/:id/delete' do
           if logged_in?
             current_user.delete
-            flash[:errors] = "Your account has been deleted. Bye"
+            flash[:errors] = "Your account has been deleted. Good Luck!!!"
             redirect to "/logout"
           else
             redirect to '/'

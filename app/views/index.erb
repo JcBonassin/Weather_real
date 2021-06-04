@@ -61,13 +61,12 @@ Prefacing the CSS selectors with .ie for IE specific styles in your CSS
 				</div>
 			</div> <!-- .site-header -->
 
-			<div class="hero" style="background-image: url(images/banner.png")>
+			<div class="hero" style="background-image: url(<%=@photos[:results][0][:urls][:full]%>")>
 				<div class="container">
 					<form action="/" class="find-location" method="POST">
 						<input type="text" name= "weather_location" placeholder="Find your location...">
 						<input type="submit" value="Find">
 					</form>
-
 				</div>
 			</div>
 			<div class="forecast-table">
@@ -79,7 +78,7 @@ Prefacing the CSS selectors with .ie for IE specific styles in your CSS
 								<div class="date"><%=Time.at(@weather[:current][:dt]).strftime('%d %b %Y')%></div>
 							</div> <!-- .forecast-header -->
 							<div class="forecast-content">
-								<div class="location"><%=@location.capitalize%></div>
+								<div class="location"><%=@location.capitalize%> (<%=@weather[:timezone]%>)</div>
 								<div class="degree">
 									<div class="num"><%=@weather[:current][:temp].round%><sup>o</sup>C</div>
 									<div class="forecast-icon">
@@ -240,23 +239,24 @@ Prefacing the CSS selectors with .ie for IE specific styles in your CSS
 								</ul>
 							</div>
 							<div class="col-md-4">
-								<h2 class="section-title">Awesome Photos</h2>
-								<div class="photo-grid1">
-									<a href="#"><img src="<%=@photos[:results][1][:urls][:thumb]%>" alt="#"></a>
-									<a href="#"><img src="<%=@photos[:results][2][:urls][:thumb]%>" alt="#"></a>
-									<a href="#"><img src="<%=@photos[:results][3][:urls][:thumb]%>" alt="#"></a>
-									<a href="#"><img src="<%=@photos[:results][0][:urls][:thumb]%>" alt="#"></a>
-									<a href="#"><img src="<%=@photos[:results][5][:urls][:thumb]%>" alt="#"></a>
-									<a href="#"><img src="<%=@photos[:results][6][:urls][:thumb]%>" alt="#"></a>
-									<a href="#"><img src="<%=@photos[:results][7][:urls][:thumb]%>" alt="#"></a>
-									<a href="#"><img src="<%=@photos[:results][8][:urls][:thumb]%>" alt="#"></a>
-									<a href="#"><img src="<%=@photos[:results][9][:urls][:thumb]%>" alt="#"></a>
-									<a href="#"><img src="<%=@photos[:results][4][:urls][:thumb]%>" alt="#"></a>
+								<h2 class="section-title"><%=@location.capitalize%> in Photos</h2>
+								<div class="photo-grid2">
+									<a href="#"><img src="<%=@photos[:results][0][:urls][:small]%>" alt="#"></a>
+								<!--	<a href="#"><img src="" alt="#"></a>
+									<a href="#"><img src="" alt="#"></a>
+									<a href="#"><img src="" alt="#"></a>
+									<a href="#"><img src="" alt="#"></a>
+									<a href="#"><img src="" alt="#"></a>
+									<a href="#"><img src="" alt="#"></a>
+									<a href="#"><img src="" alt="#"></a>
+									<a href="#"><img src="" alt="#"></a>
+									<a href="#"><img src="" alt="#"></a>-->
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
+
 <style>
 .photo-grid1 {
   display: grid;
@@ -264,6 +264,11 @@ Prefacing the CSS selectors with .ie for IE specific styles in your CSS
   grid-auto-rows: 200px;
   grid-gap: 5px;
   grid-auto-flow: dense;
+}
+
+.photo-grid2 {
+     width:50%;
+     height:50%;
 }
 </style>
 			</main> <!-- .main-content -->
@@ -300,7 +305,7 @@ Prefacing the CSS selectors with .ie for IE specific styles in your CSS
 		
 	</body>
 
-</html><link href="/YOUR_PATH/favicon.png" rel="icon" type="image/x-icon" />
+</html><link href="/YOUR_PATH/favicon.ico" rel="icon" type="image/x-icon" />
 
 <!--	<div class="fullwidth-block" data-bg-color="#262936">
 					<div class="container">

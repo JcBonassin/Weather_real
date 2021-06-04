@@ -1,4 +1,4 @@
-	<div class="hero" style="background-image: url(images/banner.png")>
+	<div class="hero" style="background-image: url(<%=@photos[:results][0][:urls][:full]%>")>
 				<div class="container">
 					<form class="find-location" action="/main" method="POST">
 						<input type="text" name= "weather_location" placeholder="Find your location...">
@@ -17,7 +17,7 @@
 							</div> <!-- .forecast-header -->
 							
 							<div class="forecast-content">
-								<div class="location"><%=@location%></div>
+								<div class="location"><%=@location%> (<%=@weather[:timezone]%>)</div>
 								<div class="degree">
 									<div class="num"><%=@weather[:current][:temp].round%><sup>o</sup>C</div>
 									<div class="forecast-icon">
@@ -122,7 +122,7 @@
 					<div class="container">
 						<h2 class="section-title">Your Locations</h2>	
 						<div class="row">
-						<% @locations.each do |location| %>
+							<% @locations.each do |location| %>
 							<div class="col-md-3 col-sm-6">
 								<div class="live-camera">
 								    	<%=API.search_location(location.weather_location)[:timezone]%>
@@ -137,10 +137,10 @@
   										<h1 class="section-title" style="color:red;"> You have no Locations yet.</h1>
 										<% end %>
 									</div>
-					    </div>
-					</div>
-			
-
+					    </div>											
+					</div> 
+				</div>
+			</main> <!-- .main-content -->
 							
 		<style>
 			.container1  {
@@ -271,20 +271,4 @@
 
 
 
-			
-
-
-				<!--	<div class="container">
-						<div class="styleform11">
-			    		   <form method="post" action="/main/delete">
-  			    		   <input id="hidden" type="hidden" name="_method" value="DELETE">
-  			    		   <input type="submit" value="Delete Locations">
-			    		   </form>
-			 			</div>
-					</div>-->
 	
-
-			<!--<% @locations.each do |location| %>
-                <p><a href="main/<%= location.id %>"><%= location.weather_location %></a></p>
-                <p> <a href="main/<%= location.id %>/edit"></span></a></p>
-                <% end %>-->		

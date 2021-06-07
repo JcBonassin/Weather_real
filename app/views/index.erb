@@ -36,7 +36,7 @@ Prefacing the CSS selectors with .ie for IE specific styles in your CSS
 		<div class="site-content">
 			<div class="site-header">
 				<div class="container">
-					<a href="index.html" class="branding">
+					<a href="/" class="branding">
 						<img src="images/logo.png" alt="" class="logo">
 						<div class="logo-type">
 							<h1 class="site-title">Weather Be</h1>
@@ -51,8 +51,8 @@ Prefacing the CSS selectors with .ie for IE specific styles in your CSS
 							<!-- <li class="menu-item current-menu-item"><a href="index.html">Home</a></li> -->
 							<li class="menu-item"><a href="/login">Login</a></li>
 							<li class="menu-item"><a href="/signup">SignUp</a></li>
-							<li class="menu-item"><a href="photos.html">Photos</a></li>
-							<li class="menu-item"><a href="contact.html">Contact</a></li>
+						<!--	<li class="menu-item"><a href="photos.html">Photos</a></li>-->
+						<!--	<li class="menu-item"><a href="contact.html">Contact</a></li>-->
 						</ul> <!-- .menu -->
 					</div> <!-- .main-navigation -->
 
@@ -241,7 +241,7 @@ Prefacing the CSS selectors with .ie for IE specific styles in your CSS
 							<div class="col-md-4">
 								<h2 class="section-title"><%=@location.capitalize%> in Photos</h2>
 								<div class="photo-grid2">
-									<a href="#"><img src="<%=@photos[:results][0][:urls][:small]%>" alt="#"></a>
+									<a href="/"><img src="<%=@photos[:results][0][:urls][:small]%>" alt="#"></a>
 								<!--	<a href="#"><img src="" alt="#"></a>
 									<a href="#"><img src="" alt="#"></a>
 									<a href="#"><img src="" alt="#"></a>

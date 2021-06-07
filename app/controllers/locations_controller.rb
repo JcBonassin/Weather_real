@@ -14,18 +14,19 @@ class LocationsController < ApplicationController
         end
       end
 
-      get '/main/new' do
-        if logged_in?
-          erb :'locations/add_location'
-        else
-          redirect to '/login'
-        end
-      end
+      #get '/main/new' do
+      #  if logged_in?
+      #    erb :'locations/add_location'
+      #  else
+      #    redirect to '/login'
+      #  end
+      #end
       
       post '/main' do 
             weather_location = params[:weather_location]
             @weather = API.search_location(weather_location)
             @location = params[:weather_location]
+            @location2 = API.search_location(@location)
             @photos = API.search_location_photo(weather_location)
             #@photosf = API.search_location_photo_flickr(weather_location)
             @news = API.news
@@ -39,8 +40,9 @@ class LocationsController < ApplicationController
                    flash[:errors] = "Location Error. Please try to add a valid location again"
                     @locations.destroy
                     redirect_to_main
-                  elsif Location.count >= 200
+                  elsif Location.count >= 200 
                     flash[:errors] = "Sorry. You can only add a Max of 4 locations. Please update or delete one of them"
+                    @locations.destroy
                     redirect_to_main
                  else
                    flash[:message] = "Your location Has Been Succesfully added. Please click on the location link for more info"
@@ -185,6 +187,17 @@ class LocationsController < ApplicationController
           redirect to "/main/#{params[:id]}"
         end
       end
+
+
+      get '/photos' do
+        @photos = API.location_photo
+        @photosf = API.auto_location_photo_flickr
+        #  if logged_in?
+            erb :photos
+        #  else
+        #    redirect to '/login'
+        #  end
+        end
 
      # patch '/main/:id' do
      #   #if logged_in?

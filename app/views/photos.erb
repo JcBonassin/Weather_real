@@ -51,15 +51,27 @@ body {
   background-color: #666;
   color: white;
 }
+.button {
+  background-color: #FFFFFF;
+  border: solid;
+  color: black;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
 </style>
+
+<form>
+ <input class="button" type="button" value="Take me back" onclick="history.go(-1)">
+</form>
 
 <!-- Header -->
 <div class="header" id="myHeader">
-  <h1>Photos</h1>
-  <p>Click on the buttons to change the grid view.</p>
-  <button class="btn" onclick="one()">1</button>
-  <button class="btn active" onclick="two()">2</button>
-  <button class="btn" onclick="four()">4</button>
+  <h1><%=@location.capitalize%> Photos</h1>
 </div>
 
 <div class="container">
@@ -70,79 +82,15 @@ body {
     <a href="<%=@photos[:results][1][:links][:html]%>" target="_blank"><img src="<%=@photos[:results][1][:urls][:regular]%>" style="width:100%"></a>
     <a href="<%=@photos[:results][2][:links][:html]%>" target="_blank"><img src="<%=@photos[:results][2][:urls][:regular]%>" style="width:100%"></a>
     <a href="<%=@photos[:results][3][:links][:html]%>" target="_blank"><img src="<%=@photos[:results][3][:urls][:regular]%>" style="width:100%"></a>
-  <!--  <img src="<%=@photos[:results][3][:urls][:regular]%>" style="width:100%">
-    <img src="<%=@photos[:results][4][:urls][:regular]%>" style="width:100%">
-    <img src="<%=@photos[:results][5][:urls][:regular]%>" style="width:100%">
-    <img src="<%=@photos[:results][6][:urls][:regular]%>" style="width:100%">-->
-  </div>
-  <div class="column">
     <a href="<%=@photos[:results][4][:links][:html]%>" target="_blank"><img src="<%=@photos[:results][4][:urls][:regular]%>" style="width:100%"></a>
     <a href="<%=@photos[:results][5][:links][:html]%>" target="_blank"><img src="<%=@photos[:results][5][:urls][:regular]%>" style="width:100%"></a>
-  <!--  <img src="<%=@photos[:results][9][:urls][:regular]%>" style="width:100%">
-    <img src="<%=@photos[:results][1][:urls][:regular]%>" style="width:100%">
-    <img src="<%=@photos[:results][9][:urls][:regular]%>" style="width:100%">
-    <img src="<%=@photos[:results][1][:urls][:regular]%>" style="width:100%">-->
-  </div>  
-  <div class="column">
     <a href="<%=@photos[:results][6][:links][:html]%>" target="_blank"><img src="<%=@photos[:results][6][:urls][:regular]%>" style="width:100%"></a>
     <a href="<%=@photos[:results][7][:links][:html]%>" target="_blank"><img src="<%=@photos[:results][7][:urls][:regular]%>" style="width:100%"></a>
     <a href="<%=@photos[:results][8][:links][:html]%>" target="_blank"><img src="<%=@photos[:results][8][:urls][:regular]%>" style="width:100%"></a>
-   <!-- <img src="<%=@photos[:results][5][:urls][:regular]%>" style="width:100%">
-    <img src="<%=@photos[:results][1][:urls][:regular]%>" style="width:100%">
-    <img src="<%=@photos[:results][6][:urls][:regular]%>" style="width:100%">
-    <img src="<%=@photos[:results][0][:urls][:regular]%>" style="width:100%">-->
-  </div>
-  <div class="column">
     <a href="<%=@photos[:results][9][:links][:html]%>" target="_blank"><img src="<%=@photos[:results][9][:urls][:regular]%>" style="width:100%"></a>
     <a href="<%=@photos[:results][0][:links][:html]%>" target="_blank"><img src="<%=@photos[:results][0][:urls][:regular]%>" style="width:100%"></a>
-  <!--  <img src="<%=@photos[:results][5][:urls][:regular]%>" style="width:100%">
-    <img src="<%=@photos[:results][9][:urls][:regular]%>" style="width:100%">
-    <img src="<%=@photos[:results][1][:urls][:regular]%>" style="width:100%">
-    <img src="<%=@photos[:results][5][:urls][:regular]%>" style="width:100%">   -->
   </div>
 </div>
 
 </div>
 
-<script>
-// Get the elements with class="column"
-var elements = document.getElementsByClassName("column");
-
-// Declare a loop variable
-var i;
-
-// Full-width images
-function one() {
-    for (i = 0; i < elements.length; i++) {
-    elements[i].style.msFlex = "100%";  // IE10
-    elements[i].style.flex = "100%";
-  }
-}
-
-// Two images side by side
-function two() {
-  for (i = 0; i < elements.length; i++) {
-    elements[i].style.msFlex = "50%";  // IE10
-    elements[i].style.flex = "50%";
-  }
-}
-
-// Four images side by side
-function four() {
-  for (i = 0; i < elements.length; i++) {
-    elements[i].style.msFlex = "25%";  // IE10
-    elements[i].style.flex = "25%";
-  }
-}
-
-// Add active class to the current button (highlight it)
-var header = document.getElementById("myHeader");
-var btns = header.getElementsByClassName("btn");
-for (var i = 0; i < btns.length; i++) {
-  btns[i].addEventListener("click", function() {
-    var current = document.getElementsByClassName("active");
-    current[0].className = current[0].className.replace(" active", "");
-    this.className += " active";
-  });
-}
-</script>

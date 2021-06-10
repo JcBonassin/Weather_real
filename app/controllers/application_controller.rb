@@ -26,7 +26,8 @@ class ApplicationController < Sinatra::Base
   post '/' do 
     weather_location = params[:weather_location]
     @weather = API.search_location(weather_location)
-    @photos = API.search_location_photo(weather_location)
+    #@photos = API.search_location_photo(weather_location)
+    @photos = API.location_photo
     @location = params[:weather_location]
     @news = API.news
     if !params[:weather_location].empty?
@@ -41,7 +42,12 @@ class ApplicationController < Sinatra::Base
     erb :index, :layout => :'not_login'
     end
 
-
+    get '/photos/your_city' do
+        @location = API.location_name
+        @photos = API.location_photo
+        @photosf = API.auto_location_photo_flickr
+        erb :photos, :layout => :'photos'
+    end
 
 
   helpers do

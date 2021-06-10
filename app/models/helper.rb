@@ -1,14 +1,22 @@
 class Helper
     def self.lat
-        response = HTTParty.get("https://freegeoip.app/json/")
-        ip = JSON.parse(response.body)
-        lat = ip["latitude"]
+        results = Geocoder.search(ip)
+        results.first.coordinates
+        response = results.first.coordinates  
+        lat = response[0]
+        #response = HTTParty.get("https://freegeoip.app/json/")
+        #ip = JSON.parse(response.body)
+        #lat = ip["latitude"]
     end 
      
     def self.lon
-        response = HTTParty.get("https://freegeoip.app/json/")
-        ip = JSON.parse(response.body)
-        lon = ip["longitude"]
+        results = Geocoder.search(ip)
+        results.first.coordinates
+        response = results.first.coordinates  
+        lon = response[1]
+        #response = HTTParty.get("https://freegeoip.app/json/")
+        #ip = JSON.parse(response.body)
+        #lon = ip["longitude"]
     end  
     
     def self.ip

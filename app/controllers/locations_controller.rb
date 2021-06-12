@@ -192,8 +192,9 @@ class LocationsController < ApplicationController
       get '/photos' do
         @photos = API.location_photo
         @photosf = API.auto_location_photo_flickr
+        @location = API.location_name
           if logged_in?
-            erb :photos
+            erb :'locations/photos_location'
           else
             redirect to '/login'
           end

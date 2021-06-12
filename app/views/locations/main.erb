@@ -12,8 +12,8 @@
 					<div class="forecast-container">
 						<div class="today forecast">
 							<div class="forecast-header">
-								<div class="day"><%=Time.at(@weather[:current][:dt]).strftime('%A / %H:%M %p')%></div>
-								<div class="date"><%=Time.at(@weather[:current][:dt]).strftime('%d %b %Y')%></div>
+								<div class="day"><%=API.time(@weather[:timezone]).strftime('%A / %H:%M %p')%></div>
+								<div class="date"><%=API.time(@weather[:timezone]).strftime('%d %b %Y')%></div>
 							</div> <!-- .forecast-header -->
 							
 							<div class="forecast-content">
@@ -131,7 +131,7 @@
 										<small class="date"><%=Time.at(API.search_location(location.weather_location)[:current][:dt]).strftime('%A %d %b %Y')%></small>												
 								</div>
 							</div>
-								<% end %>
+							<% end %>
 									<div class="container">
 										<% if (@locations.blank?) %>
   										<h1 class="section-title" style="color:red;"> You have no Locations yet.</h1>

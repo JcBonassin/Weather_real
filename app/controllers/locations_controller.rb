@@ -26,7 +26,7 @@ class LocationsController < ApplicationController
             weather_location = params[:weather_location]
             @weather = API.search_location(weather_location)
             @location = params[:weather_location]
-            @location2 = API.search_location(@location)
+            #@location2 = API.search_location(@location)
             @photos = API.search_location_photo(weather_location)
             #@photosf = API.search_location_photo_flickr(weather_location)
             @news = API.news

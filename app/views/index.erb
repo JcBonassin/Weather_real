@@ -74,8 +74,8 @@ Prefacing the CSS selectors with .ie for IE specific styles in your CSS
 					<div class="forecast-container">
 						<div class="today forecast">
 							<div class="forecast-header">
-								<div class="day"><%=Time.at(@weather[:current][:dt]).strftime('%A / %H:%M %p')%></div>
-								<div class="date"><%=Time.at(@weather[:current][:dt]).strftime('%d %b %Y')%></div>
+								<div class="day"><%=API.time(@weather[:timezone]).strftime('%A / %H:%M %p')%></div>
+								<div class="date"><%=API.time(@weather[:timezone]).strftime('%d %b %Y')%></div>
 							</div> <!-- .forecast-header -->
 							<div class="forecast-content">
 								<div class="location"><%=@location.capitalize%> (<%=@weather[:timezone]%>)</div>

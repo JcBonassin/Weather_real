@@ -1,6 +1,6 @@
 class API < Helper
 require 'uri'
-    attr_accessor :location 
+require 'tzinfo'
 
     def self.search_location(weather_location)
         results = Geocoder.search(weather_location)
@@ -24,6 +24,11 @@ require 'uri'
         data = JSON.parse(response.body, symbolize_names: true)
     end 
 
+    def self.time(timezone)
+        #DateTime.now.in_time_zone
+        tz = TZInfo::Timezone.get(timezone)   
+        now = tz.now #.strftime('%H:%M %p')
+    end 
 
 
     def self.search_location_photo_flickr(weather_location)
@@ -82,9 +87,9 @@ require 'uri'
 
 
 
-  def self.photo(location)
-    response = HTTParty.get("https://api.unsplash.com/search/photos?query=#{location}&client_id=#{ENV['API_Photos']}")
-    data = JSON.parse(response.read_body, symbolize_names: true) 
+    def self.photo(location)
+      response = HTTParty.get("https://api.unsplash.com/search/photos?query=#{location}&client_id=#{ENV['API_Photos']}")
+      data = JSON.parse(response.read_body, symbolize_names: true) 
     end 
 
 

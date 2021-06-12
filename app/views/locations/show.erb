@@ -1,6 +1,6 @@
 					
 				<div class="container">
-				<%=@weather[:timezone]%>
+				<%=@weather1[:timezone]%>
 			<!--	<%=@locations.weather_location.capitalize%>
 				<%=@weather = API.search_location(params[:id])%>-->
 					<div class="styleform">
@@ -17,100 +17,100 @@
 					<div class="forecast-container">
 						<div class="today forecast">
 							<div class="forecast-header">
-								<div class="day"><%=API.time(@weather[:timezone]).strftime('%A / %H:%M %p')%></div>
-								<div class="date"><%=API.time(@weather[:timezone]).strftime('%d %b %Y')%></div>
+								<div class="day"><%=API.time(@weather1[:timezone]).strftime('%A / %H:%M %p')%></div>
+								<div class="date"><%=API.time(@weather1[:timezone]).strftime('%d %b %Y')%></div>
 							</div> <!-- .forecast-header -->
 							<div class="forecast-content">
 								<div class="location"><%=@locations.weather_location.capitalize%></div>
 								<div class="degree">
-									<div class="num"><%=@weather[:current][:temp].round%><sup>o</sup>C</div>
+									<div class="num"><%=@weather1[:current][:temp].round%><sup>o</sup>C</div>
 									<div class="forecast-icon">
-										<div style="font-size:5rem"><%=graph_cond(@weather[:current][:weather].first[:description])%></div>
+										<div style="font-size:5rem"><%=graph_cond(@weather1[:current][:weather].first[:description])%></div>
 									</div>	
 								</div>
-								<h1><p><%=@weather[:current][:weather].first[:description].capitalize%></p></h1>
-								<span><img src="images/icon-umberella.png" alt=""><%=(@weather[:hourly][1][:pop]*100).floor%>%</span>
-								<span><img src="images/icon-wind.png" alt=""><%=(@weather[:current][:wind_speed].round)%> km/h</span>
-								<span><%=graph_cond(compass(@weather[:current][:wind_deg]))%><%=compass(@weather[:current][:wind_deg])%></span>
+								<h1><p><%=@weather1[:current][:weather].first[:description].capitalize%></p></h1>
+								<span><img src="images/icon-umberella.png" alt=""><%=(@weather1[:hourly][1][:pop]*100).floor%>%</span>
+								<span><img src="images/icon-wind.png" alt=""><%=(@weather1[:current][:wind_speed].round)%> km/h</span>
+								<span><%=graph_cond(compass(@weather[:current][:wind_deg]))%><%=compass(@weather1[:current][:wind_deg])%></span>
 								
 							</div>
 						</div>
 						<div class="forecast">
 							<div class="forecast-header">
-								<div class="day"><%=Time.at(@weather[:daily][1][:dt]).strftime('%A')%></div>
+								<div class="day"><%=Time.at(@weather1[:daily][1][:dt]).strftime('%A')%></div>
 							</div> <!-- .forecast-header -->
 							<div class="forecast-content">
 								<div class="forecast-icon">
-									<div style="font-size:4rem"><%=graph_cond(@weather[:daily][1][:weather].first[:description])%></div>
+									<div style="font-size:4rem"><%=graph_cond(@weather1[:daily][1][:weather].first[:description])%></div>
 								</div>
-								<div class="degree"><%=@weather[:daily][1][:temp][:day].to_i%><sup>o</sup>C</div>
-								<div class="min">H :<%=@weather[:daily][1][:temp][:max].to_i%><sup>o</sup></div>
-								<div class="min">L :<%=@weather[:daily][1][:temp][:min].to_i%><sup>o</sup></div>
+								<div class="degree"><%=@weather1[:daily][1][:temp][:day].to_i%><sup>o</sup>C</div>
+								<div class="min">H :<%=@weather1[:daily][1][:temp][:max].to_i%><sup>o</sup></div>
+								<div class="min">L :<%=@weather1[:daily][1][:temp][:min].to_i%><sup>o</sup></div>
 							</div>
 						</div>
 						<div class="forecast">
 							<div class="forecast-header">
-								<div class="day"><%=Time.at(@weather[:daily][2][:dt]).strftime('%A')%></div>
+								<div class="day"><%=Time.at(@weather1[:daily][2][:dt]).strftime('%A')%></div>
 							</div> <!-- .forecast-header -->
 							<div class="forecast-content">
 								<div class="forecast-icon">
 									<div style="font-size:4rem"><%=graph_cond(@weather[:daily][2][:weather].first[:description])%></div>
 								</div>
-								<div class="degree"><%=@weather[:daily][2][:temp][:day].to_i%><sup>o</sup>C</div>
-								<div class="min">H :<%=@weather[:daily][2][:temp][:max].to_i%><sup>o</sup></div>
-								<div class="min">L :<%=@weather[:daily][2][:temp][:min].to_i%><sup>o</sup></div>
+								<div class="degree"><%=@weather1[:daily][2][:temp][:day].to_i%><sup>o</sup>C</div>
+								<div class="min">H :<%=@weather1[:daily][2][:temp][:max].to_i%><sup>o</sup></div>
+								<div class="min">L :<%=@weather1[:daily][2][:temp][:min].to_i%><sup>o</sup></div>
 							</div>
 						</div>
 						<div class="forecast">
 							<div class="forecast-header">
-								<div class="day"><%=Time.at(@weather[:daily][3][:dt]).strftime('%A')%></div>
+								<div class="day"><%=Time.at(@weather1[:daily][3][:dt]).strftime('%A')%></div>
 							</div> <!-- .forecast-header -->
 							<div class="forecast-content">
 								<div class="forecast-icon">
-									<div style="font-size:4rem"><%=graph_cond(@weather[:daily][3][:weather].first[:description])%></div>
+									<div style="font-size:4rem"><%=graph_cond(@weather1[:daily][3][:weather].first[:description])%></div>
 								</div>
-								<div class="degree"><%=@weather[:daily][3][:temp][:day].to_i%><sup>o</sup>C</div>
-								<div class="min">H :<%=@weather[:daily][3][:temp][:max].to_i%><sup>o</sup></div>
-								<div class="min">L :<%=@weather[:daily][3][:temp][:min].to_i%><sup>o</sup></div>
+								<div class="degree"><%=@weather1[:daily][3][:temp][:day].to_i%><sup>o</sup>C</div>
+								<div class="min">H :<%=@weather1[:daily][3][:temp][:max].to_i%><sup>o</sup></div>
+								<div class="min">L :<%=@weather1[:daily][3][:temp][:min].to_i%><sup>o</sup></div>
 							</div>
 						</div>
 						<div class="forecast">
 							<div class="forecast-header">
-								<div class="day"><%=Time.at(@weather[:daily][4][:dt]).strftime('%A')%></div>
+								<div class="day"><%=Time.at(@weather1[:daily][4][:dt]).strftime('%A')%></div>
 							</div> <!-- .forecast-header -->
 							<div class="forecast-content">
 								<div class="forecast-icon">
-									<div style="font-size:4rem"><%=graph_cond(@weather[:daily][4][:weather].first[:description])%></div>
+									<div style="font-size:4rem"><%=graph_cond(@weather1[:daily][4][:weather].first[:description])%></div>
 								</div>
-								<div class="degree"><%=@weather[:daily][4][:temp][:day].to_i%><sup>o</sup>C</div>
-								<div class="min">H :<%=@weather[:daily][4][:temp][:max].to_i%><sup>o</sup></div>
-								<div class="min">L :<%=@weather[:daily][4][:temp][:min].to_i%><sup>o</sup></div>
+								<div class="degree"><%=@weather1[:daily][4][:temp][:day].to_i%><sup>o</sup>C</div>
+								<div class="min">H :<%=@weather1[:daily][4][:temp][:max].to_i%><sup>o</sup></div>
+								<div class="min">L :<%=@weather1[:daily][4][:temp][:min].to_i%><sup>o</sup></div>
 							</div>
 						</div>
 						<div class="forecast">
 							<div class="forecast-header">
-								<div class="day"><%=Time.at(@weather[:daily][5][:dt]).strftime('%A')%></div>
+								<div class="day"><%=Time.at(@weather1[:daily][5][:dt]).strftime('%A')%></div>
 							</div> <!-- .forecast-header -->
 							<div class="forecast-content">
 								<div class="forecast-icon">
 									<div style="font-size:4rem"><%=graph_cond(@weather[:daily][5][:weather].first[:description])%></div>
 								</div>
-								<div class="degree"><%=@weather[:daily][5][:temp][:day].to_i%><sup>o</sup>C</div>
-								<div class="min">H :<%=@weather[:daily][5][:temp][:max].to_i%><sup>o</sup></div>
-								<div class="min">L :<%=@weather[:daily][5][:temp][:min].to_i%><sup>o</sup></div>
+								<div class="degree"><%=@weather1[:daily][5][:temp][:day].to_i%><sup>o</sup>C</div>
+								<div class="min">H :<%=@weather1[:daily][5][:temp][:max].to_i%><sup>o</sup></div>
+								<div class="min">L :<%=@weather1[:daily][5][:temp][:min].to_i%><sup>o</sup></div>
 							</div>
 						</div>
 						<div class="forecast">
 							<div class="forecast-header">
-								<div class="day"><%=Time.at(@weather[:daily][6][:dt]).strftime('%A')%></div>
+								<div class="day"><%=Time.at(@weather1[:daily][6][:dt]).strftime('%A')%></div>
 							</div> <!-- .forecast-header -->
 							<div class="forecast-content">
 								<div class="forecast-icon">
-									<div style="font-size:4rem"><%=graph_cond(@weather[:daily][6][:weather].first[:description])%></div>
+									<div style="font-size:4rem"><%=graph_cond(@weather1[:daily][6][:weather].first[:description])%></div>
 								</div>
-								<div class="degree"><%=@weather[:daily][6][:temp][:day].to_i%><sup>o</sup>C</div>
-								<div class="min">H :<%=@weather[:daily][6][:temp][:max].to_i%><sup>o</sup></div>
-								<div class="min">L :<%=@weather[:daily][6][:temp][:min].to_i%><sup>o</sup></div>
+								<div class="degree"><%=@weather1[:daily][6][:temp][:day].to_i%><sup>o</sup>C</div>
+								<div class="min">H :<%=@weather1[:daily][6][:temp][:max].to_i%><sup>o</sup></div>
+								<div class="min">L :<%=@weather1[:daily][6][:temp][:min].to_i%><sup>o</sup></div>
 							</div>
 						</div>
 					</div>

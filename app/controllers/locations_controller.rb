@@ -113,8 +113,8 @@ class LocationsController < ApplicationController
         if logged_in?
             #weather_location = params[:weather_location]
             @locations = Location.find_by_id(params[:id])
-            @weather = API.search_location(@locations.weather_location)
-            @photos = API.search_location_photo(@locations.weather_location)
+            @weather1 = API.search_location(@locations.weather_location)
+            #@photos = API.search_location_photo(@locations.weather_location)
             # @weather = API.search_location(params[:id])
             @news = API.news  
             #if (@weather == nil && @photos == nil)

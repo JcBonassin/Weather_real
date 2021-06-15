@@ -85,6 +85,11 @@ require 'tzinfo'
         data = JSON.parse(response.read_body, symbolize_names: true)
     end 
 
+    def self.news_weather
+        response = HTTParty.get("https://newsapi.org/v2/everything?q=weather&apiKey=#{ENV['API_NEWS']}")
+        data = JSON.parse(response.read_body, symbolize_names: true)
+    end 
+
 
 
     def self.photo(location)

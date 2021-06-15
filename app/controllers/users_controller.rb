@@ -5,6 +5,7 @@ class UsersController < ApplicationController
     @location = API.location_name
     @photos = API.location_photo
     @news = API.news
+    @news_weather = API.news_weather
     if !logged_in?
       erb :index, :layout => :'/users/create_user'
     else
@@ -30,6 +31,7 @@ class UsersController < ApplicationController
         @location = API.location_name
         @photos = API.location_photo
         @news = API.news 
+        @news_weather = API.news_weather
         if !logged_in?
           erb :index, :layout => :'users/login'
         else 

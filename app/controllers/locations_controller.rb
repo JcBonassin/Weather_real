@@ -5,6 +5,7 @@ class LocationsController < ApplicationController
           @weather = API.auto_search
           @location = API.location_name
           @news = API.news 
+          @news_weather = API.news_weather
           @locations = current_user.locations.all
           @photos = API.location_photo
           
@@ -191,7 +192,7 @@ class LocationsController < ApplicationController
 
       get '/photos' do
         @photos = API.location_photo
-        @photosf = API.auto_location_photo_flickr
+        #@photosf = API.auto_location_photo_flickr
         @location = API.location_name
           if logged_in?
             erb :'locations/photos_location'

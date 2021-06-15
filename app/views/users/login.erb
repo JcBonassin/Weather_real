@@ -96,13 +96,13 @@ Prefacing the CSS selectors with .ie for IE specific styles in your CSS
 
 
 
-			<div class="hero" style="background-image: url(images/banner.png")>
+			<div class="hero" style="background-image: url(<%=@photos[:results][1][:urls][:full]%>")>
             
 				<div class="container">
-					<form action="/" class="find-location" method="POST">
+				<!--	<form action="/" class="find-location" method="POST">
 						<input type="text" name= "weather_location" placeholder="Find your location...">
 						<input type="submit" value="Find">
-					</form>
+					</form>-->
 
 				</div>
 			</div>
@@ -266,14 +266,14 @@ Prefacing the CSS selectors with .ie for IE specific styles in your CSS
 
 			<footer class="site-footer">
 				<div class="container">
-					<div class="row">
+				<!--	<div class="row">
 						<div class="col-md-8">
 							<form action="#" class="subscribe-form">
 								<input type="text" placeholder="Enter your email to subscribe...">
 								<input type="submit" value="Subscribe">
 							</form>
 						</div>
-						<div class="col-md-3 col-md-offset-1">
+					<!--	<div class="col-md-3 col-md-offset-1">
 							<div class="social-links">
 								<a href="#"><i class="fa fa-facebook"></i></a>
 								<a href="#"><i class="fa fa-twitter"></i></a>
@@ -281,7 +281,7 @@ Prefacing the CSS selectors with .ie for IE specific styles in your CSS
 								<a href="#"><i class="fa fa-pinterest"></i></a>
 							</div>
 						</div>
-					</div>
+					</div>-->
 
 					<p class="colophon">Copyright 2021 WeatherReal. All rights reserved</p>
 					<p>Made</span> by <a href="http://www.jcbonassin.net" target="_blank"><strong>JC Bonassin</strong></a>

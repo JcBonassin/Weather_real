@@ -140,6 +140,92 @@
 					    </div>															
 					</div> 
 				</div>
+
+			<div class="fullwidth-block" data-bg-color="#262936">
+					<div class="container">
+                    <p><h1>BBC News</h1></p>
+						<div class="row">
+							<div class="col-md-4">
+								<div class="news">
+									<div class="date"><%=Time.now.strftime('%d %B')%></div>
+									<figure class="live-camera-cover"><img src="<%=@news[:articles][0][:urlToImage]%>" width="230" height="151" alt=""></figure>
+									<h3><a href="<%=@news[:articles][0][:url]%>"target="_blank"><%=@news[:articles][0][:title]%></a></h3>
+									<p><%=@news[:articles][0][:description]%></p>
+								</div>
+							</div>
+							<div class="col-md-4">
+								<div class="news">
+									<div class="date"><%=Time.now.strftime('%d %B')%></div>
+									<figure class="live-camera-cover"><img src="<%=@news[:articles][1][:urlToImage]%>" width="230" height="151" alt=""></figure>
+									<h3><a href="<%=@news[:articles][1][:url]%>"target="_blank"><%=@news[:articles][1][:title]%></a></h3>
+									<p><%=@news[:articles][1][:description]%></p>
+								</div>
+							</div>
+							<div class="col-md-4">
+								<div class="news">
+									<div class="date"><%=Time.now.strftime('%d %B')%></div>
+									<figure class="live-camera-cover"><img src="<%=@news[:articles][2][:urlToImage]%>" width="230" height="151" alt=""></figure>
+									<h3><a href="<%=@news[:articles][2][:url]%>"target="_blank"><%=@news[:articles][2][:title]%></a></h3>
+									<p><%=@news[:articles][2][:description]%></p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="fullwidth-block">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-4">
+								<h2 class="section-title">More BBC News</h2>
+								<ul class="arrow-feature">
+									<li>
+										<h3><a href="<%=@news[:articles][3][:url]%>"target="_blank"><%=@news[:articles][3][:title]%></a></h3>
+										<p><%=@news[:articles][3][:description]%></p>
+									</li>
+									<li>
+										<h3><a href="<%=@news[:articles][4][:url]%>"target="_blank"><%=@news[:articles][4][:title]%></a></h3>
+										<p><%=@news[:articles][4][:description]%></p>
+									</li>
+									<li>
+										<h3><a href="<%=@news[:articles][5][:url]%>"target="_blank"><%=@news[:articles][5][:title]%></a></h3>
+										<p><%=@news[:articles][5][:description]%></p>
+									</li>
+								</ul>
+							</div>
+							<div class="col-md-4">
+								<h2 class="section-title">Weather News</h2>
+								<ul class="arrow-list">
+									<li><a href="<%=@news_weather[:articles][0][:url]%>"target="_blank"><%=@news_weather[:articles][0][:title]%></a></li>
+									<li><a href="<%=@news_weather[:articles][1][:url]%>"target="_blank"><%=@news_weather[:articles][1][:title]%></a></li>
+									<li><a href="<%=@news_weather[:articles][2][:url]%>"target="_blank"><%=@news_weather[:articles][2][:title]%></a></li>
+									<li><a href="<%=@news_weather[:articles][3][:url]%>"target="_blank"><%=@news_weather[:articles][3][:title]%></a></li>
+									<li><a href="<%=@news_weather[:articles][4][:url]%>"target="_blank"><%=@news_weather[:articles][4][:title]%></a></li>
+									<li><a href="<%=@news_weather[:articles][5][:url]%>"target="_blank"><%=@news_weather[:articles][5][:title]%></a></li>
+									<li><a href="<%=@news_weather[:articles][6][:url]%>"target="_blank"><%=@news_weather[:articles][6][:title]%></a></li>
+								</ul>
+							</div>
+							<div class="col-md-4">
+								<h2 class="section-title"> Photos of your City </h2>
+								<div class="photo-grid2">
+									<a href="/photos/your_city"><img src="<%=@photos[:results][3][:urls][:small]%>" alt="#"></a>
+								<!--	<a href="#"><img src="" alt="#"></a>
+									<a href="#"><img src="" alt="#"></a>
+									<a href="#"><img src="" alt="#"></a>
+									<a href="#"><img src="" alt="#"></a>
+									<a href="#"><img src="" alt="#"></a>
+									<a href="#"><img src="" alt="#"></a>
+									<a href="#"><img src="" alt="#"></a>
+									<a href="#"><img src="" alt="#"></a>
+									<a href="#"><img src="" alt="#"></a>-->
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+
 			</main> <!-- .main-content -->
 							
 		<style>

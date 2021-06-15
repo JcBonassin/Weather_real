@@ -210,38 +210,38 @@ Prefacing the CSS selectors with .ie for IE specific styles in your CSS
 					<div class="container">
 						<div class="row">
 							<div class="col-md-4">
-								<h2 class="section-title">Application features</h2>
+								<h2 class="section-title">More BBC News</h2>
 								<ul class="arrow-feature">
 									<li>
-										<h3>Natus error sit voluptatem accusantium</h3>
-										<p>Doloremque laudantium totam rem aperiam Inventore veritatis et quasi architecto beatae vitae.</p>
+										<h3><a href="<%=@news[:articles][3][:url]%>"target="_blank"><%=@news[:articles][3][:title]%></a></h3>
+										<p><%=@news[:articles][3][:description]%></p>
 									</li>
 									<li>
-										<h3>Natus error sit voluptatem accusantium</h3>
-										<p>Doloremque laudantium totam rem aperiam Inventore veritatis et quasi architecto beatae vitae.</p>
+										<h3><a href="<%=@news[:articles][4][:url]%>"target="_blank"><%=@news[:articles][4][:title]%></a></h3>
+										<p><%=@news[:articles][4][:description]%></p>
 									</li>
 									<li>
-										<h3>Natus error sit voluptatem accusantium</h3>
-										<p>Doloremque laudantium totam rem aperiam Inventore veritatis et quasi architecto beatae vitae.</p>
+										<h3><a href="<%=@news[:articles][5][:url]%>"target="_blank"><%=@news[:articles][5][:title]%></a></h3>
+										<p><%=@news[:articles][5][:description]%></p>
 									</li>
 								</ul>
 							</div>
 							<div class="col-md-4">
-								<h2 class="section-title">Weather analyssis</h2>
+								<h2 class="section-title">Weather News</h2>
 								<ul class="arrow-list">
-									<li><a href="#">Accusantium doloremque laudantium rem aperiam</a></li>
-									<li><a href="#">Eaque ipsa quae ab illo inventore veritatis quasi</a></li>
-									<li><a href="#">Architecto beatae vitae dicta sunt explicabo</a></li>
-									<li><a href="#">Nemo enim ipsam voluptatem quia voluptas</a></li>
-									<li><a href="#">Aspernatur aut odit aut fugit, sed quia consequuntur</a></li>
-									<li><a href="#">Magni dolores eos qui ratione voluptatem sequi</a></li>
-									<li><a href="#">Neque porro quisquam est qui dolorem ipsum quia</a></li>
+									<li><a href="<%=@news_weather[:articles][0][:url]%>"target="_blank"><%=@news_weather[:articles][0][:title]%></a></li>
+									<li><a href="<%=@news_weather[:articles][1][:url]%>"target="_blank"><%=@news_weather[:articles][1][:title]%></a></li>
+									<li><a href="<%=@news_weather[:articles][2][:url]%>"target="_blank"><%=@news_weather[:articles][2][:title]%></a></li>
+									<li><a href="<%=@news_weather[:articles][3][:url]%>"target="_blank"><%=@news_weather[:articles][3][:title]%></a></li>
+									<li><a href="<%=@news_weather[:articles][4][:url]%>"target="_blank"><%=@news_weather[:articles][4][:title]%></a></li>
+									<li><a href="<%=@news_weather[:articles][5][:url]%>"target="_blank"><%=@news_weather[:articles][5][:title]%></a></li>
+									<li><a href="<%=@news_weather[:articles][6][:url]%>"target="_blank"><%=@news_weather[:articles][6][:title]%></a></li>
 								</ul>
 							</div>
 							<div class="col-md-4">
 								<h2 class="section-title"> Photos of your City </h2>
 								<div class="photo-grid2">
-									<a href="/photos/your_city"><img src="<%=@photos[:results][1][:urls][:small]%>" alt="#"></a>
+									<a href="/photos/your_city"><img src="<%=@photos[:results][3][:urls][:small]%>" alt="#"></a>
 								<!--	<a href="#"><img src="" alt="#"></a>
 									<a href="#"><img src="" alt="#"></a>
 									<a href="#"><img src="" alt="#"></a>

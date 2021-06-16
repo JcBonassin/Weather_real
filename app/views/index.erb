@@ -22,6 +22,7 @@ Prefacing the CSS selectors with .ie for IE specific styles in your CSS
 
 		<!-- Loading main css file -->
 		<link rel="stylesheet" href="/stylesheets/main.css">
+		<link rel="icon" href="favicon.ico?v=2" type="image/x-icon"/>
 		
 		<!--[if lt IE 9]>
 		<script src="js/ie-support/html5.js"></script>
@@ -61,7 +62,7 @@ Prefacing the CSS selectors with .ie for IE specific styles in your CSS
 				</div>
 			</div> <!-- .site-header -->
 
-			<div class="hero" style="background-image: url(<%=@photos[:results][0][:urls][:full]%>")>
+			<div class="hero" style="background-image: url(<%=@photos[:results][1][:urls][:full]%>")>
 				<div class="container">
 					<form action="/" class="find-location" method="POST">
 						<input type="text" name= "weather_location" placeholder="Find your location...">
@@ -305,36 +306,4 @@ Prefacing the CSS selectors with .ie for IE specific styles in your CSS
 		
 	</body>
 
-</html><link href="/YOUR_PATH/favicon.ico" rel="icon" type="image/x-icon" />
-
-<!--	<div class="fullwidth-block" data-bg-color="#262936">
-					<div class="container">
-                    <p><h1>BBC News</h1></p>
-						<div class="row">
-							<div class="col-md-4">
-								<div class="news">
-									<div class="date"><%=Time.now.strftime('%d %B')%></div>
-									<figure class="live-camera-cover"><img src="<%=@news[:articles][0][:urlToImage]%>" width="230" height="151" alt=""></figure>
-									<h3><a href="<%=@news[:articles][0][:url]%>"target="_blank"><%=@news[:articles][0][:title]%></a></h3>
-									<p><%=@news[:articles][0][:description]%></p>
-								</div>
-							</div>
-							<div class="col-md-4">
-								<div class="news">
-									<div class="date"><%=Time.now.strftime('%d %B')%></div>
-									<figure class="live-camera-cover"><img src="<%=@news[:articles][1][:urlToImage]%>" width="230" height="151" alt=""></figure>
-									<h3><a href="<%=@news[:articles][1][:url]%>"target="_blank"><%=@news[:articles][1][:title]%></a></h3>
-									<p><%=@news[:articles][1][:description]%></p>
-								</div>
-							</div>
-							<div class="col-md-4">
-								<div class="news">
-									<div class="date"><%=Time.now.strftime('%d %B')%></div>
-									<figure class="live-camera-cover"><img src="<%=@news[:articles][2][:urlToImage]%>" width="230" height="151" alt=""></figure>
-									<h3><a href="<%=@news[:articles][2][:url]%>"target="_blank"><%=@news[:articles][2][:title]%></a></h3>
-									<p><%=@news[:articles][2][:description]%></p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+</html>

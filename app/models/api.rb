@@ -25,9 +25,8 @@ require 'tzinfo'
     end 
 
     def self.time(timezone)
-        #DateTime.now.in_time_zone
         tz = TZInfo::Timezone.get(timezone)   
-        now = tz.now #.strftime('%H:%M %p')
+        now = tz.now 
     end 
 
 
@@ -127,14 +126,7 @@ require 'tzinfo'
          end 
         location = results.first.city
         self.photo(location)  
-    end 
-
-    #def self.auto_url(server, id, secret)
-    #    server = self.server
-    #    id = self.id
-    #    secret = self.secret
-    #    self.url(lat, lon) 
-    #end 
+    end   
 
  end 
     

@@ -27,10 +27,10 @@ class ApplicationController < Sinatra::Base
   post '/' do 
     weather_location = params[:weather_location]
     @weather = API.search_location(weather_location)
-    #@photos = API.search_location_photo(weather_location)
     @photos = API.location_photo
     @location = params[:weather_location]
     @news = API.news
+    @news_weather = API.news_weather
     if !params[:weather_location].empty?
         if (@weather == nil && @photos == nil || @photos == {:total=>0, :total_pages=>0, :results=>[]}) 
         flash[:errors] = "Location Error. Your entry has been deleted. Please try to add a valid location again"
@@ -61,12 +61,6 @@ class ApplicationController < Sinatra::Base
       @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
     end
 
-    def all_delete
-      @locations.each do |location| 
-         location.destroy
-      end 
-    end
-
     def redirect_not_login
       if !logged_in?
         redirect "/"
@@ -79,7 +73,6 @@ class ApplicationController < Sinatra::Base
      
     def compass(deg)
       value = ((deg.to_f / 22.5) + 0.5).floor
-      #direction = ["North", "North-Northeast", "Northeast", "East-Northeast", "East", "East-Southeast", "Southeast", "South-Southeast", "South", "South-Southwest", "Southwest", "West-Southwest", "West", "West-Northwest", "Northwest", "North-Northwest"]
       direction = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"]
       return direction[(value % 16)]
     end 

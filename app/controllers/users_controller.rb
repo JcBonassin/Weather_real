@@ -51,11 +51,6 @@ class UsersController < ApplicationController
         end
       end
 
-      #get '/user/:slug' do
-      #  @user = User.find_by_slug(params[:slug])
-      #  erb :'users/edit_user'
-      #end 
-
       get '/user/:id/edit' do
         if logged_in?
           erb :'users/show_details'
@@ -78,10 +73,6 @@ class UsersController < ApplicationController
     end
 
       get '/user/:id' do
-        #@weather = API.auto_search
-        #@location = API.location_name
-        #@news = API.news
-        #@photos = API.location_photo
         if logged_in?
           erb :'users/show_details'
         else

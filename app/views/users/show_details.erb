@@ -1,23 +1,13 @@
 
-			
-			<!-- 	<div class="container">
-					<div class="breadcrumb">
-						<a href="index.html">Home</a>
-						<span>Contact</span>
-					</div>
-				</div>-->
-
-			<!--	<div class="fullwidth-block">-->
 					<div class="container">
 						<div class="col-md-5">
 							<div class="contact-details1">		
-                                 <div id="googleMap" style="width:100%;height:400px;"></div>         
-                                    <script
-		                                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDSy-yd7g6IvrhFmmXgD5R5glDzNRDN2uk&callback=initMap"
-		                                async defer>
-                                    </script>
-        
-                                    <script>
+                <div id="googleMap" style="width:100%;height:400px;"></div>         
+                    <script
+		                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDSy-yd7g6IvrhFmmXgD5R5glDzNRDN2uk&callback=initMap"
+		                async defer>
+                    </script>
+                                        <script>
                                           // Note: This example requires that you consent to location sharing when
                                           // prompted by your browser. If you see the error "The Geolocation service
                                           // failed.", it means you probably did not give permission for the browser to
@@ -100,47 +90,47 @@
 								</div>
 			                    </div>
 							</form>
-                                            <script type = "text/javascript">
-                                        
-                                               function getConfirmation1() {
-                                                  if(confirm("Are you happy with the changes?")){
-                                                        return true;
-                                                   }else{
-                                                        return false;
-                                                   }
-                                                }                         
-                                            </script>     
+                  <script type = "text/javascript">
+              
+                     function getConfirmation1() {
+                        if(confirm("Are you happy with the changes?")){
+                              return true;
+                         }else{
+                              return false;
+                         }
+                      }                         
+                  </script>     
 			                    	<div class="text-right1">
 			                           <form onsubmit="return getConfirmation();" method="post" action="/user/<%=current_user.id%>/delete">
   			                           <input id="hidden" type="hidden" name="_method" value="DELETE">
   			                           <input type="submit" value="Delete your Account">
 			                           </form>
-                                       <script type = "text/javascript">
-                                        
-                                               function getConfirmation() {
-                                                  if(confirm("Are you sure you want to delete?")){
-                                                        return true;
-                                                   }else{
-                                                        return false;
-                                                   }
-                                                }                         
-                                            </script>     
+                    <script type = "text/javascript">
+                     
+                            function getConfirmation() {
+                               if(confirm("Are you sure you want to delete?")){
+                                     return true;
+                                }else{
+                                     return false;
+                                }
+                             }                         
+                    </script>     
 
 
-			                     	</div>
+			  </div>
 
-                                    <style>
-			                            .text-right1 {
-			                            	text-align: right;
-			                            	padding: 0px 15px 0px 0px;
-			                            	}
-			                        </style>
+          <style>
+			      .text-right1 {
+			      	text-align: right;
+			      	padding: 0px 15px 0px 0px;
+			      	}
+			    </style>
 
 						</div>
 					</div>
 				</div>
-                <p></p>
+      <p></p>
 				
-			</main> <!-- .main-content -->
+		
 
 			

@@ -22,6 +22,7 @@ Prefacing the CSS selectors with .ie for IE specific styles in your CSS
 
 		<!-- Loading main css file -->
 		<link rel="stylesheet" href="/stylesheets/main.css">
+		<link rel="icon" href="favicon.ico?v=2" type="image/x-icon"/>
 		
 		<!--[if lt IE 9]>
 		<script src="js/ie-support/html5.js"></script>
@@ -34,15 +35,22 @@ Prefacing the CSS selectors with .ie for IE specific styles in your CSS
 	<body>
 
 	<div class="container">
-		<div class="flash">
+		<div class="flash" onclick=delete_flash(this)>
 		   <% if flash[:message] %>
-           <h3 style="color:white;"><%= flash[:message] %></h3>
+		   <h3 style="color:white;"><%=flash[:message]%> <button class="close-button" aria-label="Close alert" type="button" data-close><span aria-hidden="true">&times;</span></button></h3>
       	   <% end %>
-      	   <% if flash[:errors] %>
-           <h3 style="color:red;"><%= flash[:errors] %></h3>
+      	   <% if flash[:errors] %>		 
+           <h3 style="color:red;"><%=flash[:errors]%> <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></h3>
       	   <% end %>
 		</div>
 	</div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+       <script>
+           function delete_flash(flash){
+               $(flash).parent().remove()
+           }
+    	</script>
 
 	<style>
 
@@ -55,11 +63,24 @@ Prefacing the CSS selectors with .ie for IE specific styles in your CSS
 	.flash  p { opacity: 0.8; color: #fff; }
     }
 	</style>
+	
+	<div class="main-navigation">
+		<div class="container">
+						<button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
+						<ul class="menu">
+							<!-- <li class="menu-item current-menu-item"><a href="index.html">Home</a></li> -->
+							<li class="menu-item"><a href="/main">Home</a></li>
+							<!--<li class="menu-item"><a href="/user/">Your Details</a></li>
+							<li class="menu-item"><a href="/photos">Photos</a></li>-->
+							<li class="menu-item"><a href="/login">login</a></li>
+						</ul> <!-- .menu -->
+		</div> <!-- .main-navigation -->
+	 </div>
 		
 		<div class="site-content">
 			<div class="site-header">
 				<div class="container">
-					<a href="/" class="branding">
+					<div href="" class="branding">
 						<img src="images/logo.png" alt="" class="logo">
 						<div class="logo-type">
 							<h1 class="site-title">Weather Be</h1>
@@ -95,7 +116,7 @@ Prefacing the CSS selectors with .ie for IE specific styles in your CSS
                               	</form>
 							  </div>
                         </div>     
-					</a>
+					</div>  
              	</div>
         	</div>
 		</div>
@@ -176,7 +197,7 @@ Prefacing the CSS selectors with .ie for IE specific styles in your CSS
 		</div>	
 	</body>
 
-</html><link href="/YOUR_PATH/favicon.ico" rel="icon" type="image/x-icon" />
+</html>
 
 
 

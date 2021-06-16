@@ -19,7 +19,6 @@ gem 'geocoder', '~> 1.6', '>= 1.6.6'
 gem 'sinatra-flash'
 gem 'uri'
 
-
 group :test do
   gem 'rspec'
   gem 'capybara'

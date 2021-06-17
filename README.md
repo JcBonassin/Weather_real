@@ -1,6 +1,6 @@
 ![weather_Be](https://user-images.githubusercontent.com/72950188/122404437-d862a000-cf44-11eb-94fa-24f94010aaac.png)
-<div align="center">
-  <p>With this Sinatra based webapp, you can easily check the weather from an API OpenWeatherMap and few other stuff.</p>
+<div align="center" > 
+<p>With this Sinatra based webapp, you can easily check the weather from an API OpenWeatherMap and few other stuff.</p>
 </div>
 
 # Hello 
@@ -67,7 +67,8 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/<githu
 
 ## Copyright and License
 
-This project is licensed under the terms of the [MIT License](https://opensource.org/licenses/MIT).
-Copyright (c) 2021, [Jc Bonassin](https://www.jcbonassin.net/).
+- This project is licensed under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+
+- Copyright (c) 2021, [Jc Bonassin](https://www.jcbonassin.net/).
 
 

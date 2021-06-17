@@ -63,8 +63,6 @@ Contributions are what make the open source community such an amazing place to b
 - Push to the Branch (git push origin feature/AmazingFeature)
 - Open a Pull Request
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/<github username>/weather_today. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/<github username>/weather_today/blob/master/CODE_OF_CONDUCT.md).
-
 ## Copyright and License
 
 - This project is licensed under the terms of the [MIT License](https://opensource.org/licenses/MIT).

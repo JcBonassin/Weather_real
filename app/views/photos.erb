@@ -26,70 +26,70 @@
 	<body>
 
 <style>
-* {
-  box-sizing: border-box;
-}
+  * {
+    box-sizing: border-box;
+  }
 
-body {
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-}
+  body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+  }
 
-.header {
-  text-align: center;
-  padding: 32px;
-}
+  .header {
+    text-align: center;
+    padding: 32px;
+  }
 
-.row {
-  display: -ms-flexbox; /* IE 10 */
-  display: flex;
-  -ms-flex-wrap: wrap; /* IE 10 */
-  flex-wrap: wrap;
-  padding: 0 4px;
-}
+  .row {
+    display: -ms-flexbox; /* IE 10 */
+    display: flex;
+    -ms-flex-wrap: wrap; /* IE 10 */
+    flex-wrap: wrap;
+    padding: 0 4px;
+  }
 
-/* Create two equal columns that sits next to each other */
-.column {
-  -ms-flex: 50%; /* IE 10 */
-  flex: 50%;
-  padding: 0 4px;
-}
+  /* Create two equal columns that sits next to each other */
+  .column {
+    -ms-flex: 50%; /* IE 10 */
+    flex: 50%;
+    padding: 0 4px;
+  }
 
-.column img {
-  margin-top: 8px;
-  vertical-align: middle;
-}
+  .column img {
+    margin-top: 8px;
+    vertical-align: middle;
+  }
 
-/* Style the buttons */
-.btn {
-  border: none;
-  outline: none;
-  padding: 10px 16px;
-  background-color: #f1f1f1;
-  cursor: pointer;
-  font-size: 18px;
-}
+  /* Style the buttons */
+  .btn {
+    border: none;
+    outline: none;
+    padding: 10px 16px;
+    background-color: #f1f1f1;
+    cursor: pointer;
+    font-size: 18px;
+  }
 
-.btn:hover {
-  background-color: #ddd;
-}
+  .btn:hover {
+    background-color: #ddd;
+  }
 
-.btn.active {
-  background-color: #666;
-  color: white;
-}
-.button {
-  background-color: #FFFFFF;
-  border: solid;
-  color: black;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-}
+  .btn.active {
+    background-color: #666;
+    color: white;
+  }
+  .button {
+    background-color: #FFFFFF;
+    border: solid;
+    color: black;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
 </style>
 
 <!-- Header -->
@@ -105,37 +105,36 @@ body {
 
 <!-- Photo Grid -->
 <div class="row"> 
-  <div class="column">
-    <a href="<%=@photos[:results][1][:links][:html]%>" target="_blank"><img src="<%=@photos[:results][1][:urls][:regular]%>" style="width:100%"></a>
-    <a href="<%=@photos[:results][2][:links][:html]%>" target="_blank"><img src="<%=@photos[:results][2][:urls][:regular]%>" style="width:100%"></a>
-    <a href="<%=@photos[:results][3][:links][:html]%>" target="_blank"><img src="<%=@photos[:results][3][:urls][:regular]%>" style="width:100%"></a>
-    <a href="<%=@photos[:results][4][:links][:html]%>" target="_blank"><img src="<%=@photos[:results][4][:urls][:regular]%>" style="width:100%"></a>
-    <a href="<%=@photos[:results][5][:links][:html]%>" target="_blank"><img src="<%=@photos[:results][5][:urls][:regular]%>" style="width:100%"></a>
-    <a href="<%=@photos[:results][6][:links][:html]%>" target="_blank"><img src="<%=@photos[:results][6][:urls][:regular]%>" style="width:100%"></a>
-    <a href="<%=@photos[:results][7][:links][:html]%>" target="_blank"><img src="<%=@photos[:results][7][:urls][:regular]%>" style="width:100%"></a>
-    <a href="<%=@photos[:results][8][:links][:html]%>" target="_blank"><img src="<%=@photos[:results][8][:urls][:regular]%>" style="width:100%"></a>
-    <a href="<%=@photos[:results][9][:links][:html]%>" target="_blank"><img src="<%=@photos[:results][9][:urls][:regular]%>" style="width:100%"></a>
-    <a href="<%=@photos[:results][0][:links][:html]%>" target="_blank"><img src="<%=@photos[:results][0][:urls][:regular]%>" style="width:100%"></a>
-  </div>
-</div>
-
+    <div class="column">
+      <a href="<%=@photos[:results][1][:links][:html]%>" target="_blank"><img src="<%=@photos[:results][1][:urls][:regular]%>" style="width:100%"></a>
+      <a href="<%=@photos[:results][2][:links][:html]%>" target="_blank"><img src="<%=@photos[:results][2][:urls][:regular]%>" style="width:100%"></a>
+      <a href="<%=@photos[:results][3][:links][:html]%>" target="_blank"><img src="<%=@photos[:results][3][:urls][:regular]%>" style="width:100%"></a>
+      <a href="<%=@photos[:results][4][:links][:html]%>" target="_blank"><img src="<%=@photos[:results][4][:urls][:regular]%>" style="width:100%"></a>
+      <a href="<%=@photos[:results][5][:links][:html]%>" target="_blank"><img src="<%=@photos[:results][5][:urls][:regular]%>" style="width:100%"></a>
+      <a href="<%=@photos[:results][6][:links][:html]%>" target="_blank"><img src="<%=@photos[:results][6][:urls][:regular]%>" style="width:100%"></a>
+      <a href="<%=@photos[:results][7][:links][:html]%>" target="_blank"><img src="<%=@photos[:results][7][:urls][:regular]%>" style="width:100%"></a>
+      <a href="<%=@photos[:results][8][:links][:html]%>" target="_blank"><img src="<%=@photos[:results][8][:urls][:regular]%>" style="width:100%"></a>
+      <a href="<%=@photos[:results][9][:links][:html]%>" target="_blank"><img src="<%=@photos[:results][9][:urls][:regular]%>" style="width:100%"></a>
+      <a href="<%=@photos[:results][0][:links][:html]%>" target="_blank"><img src="<%=@photos[:results][0][:urls][:regular]%>" style="width:100%"></a>
+    </div>
+  </div>              
 </div>
 
 </footer> <!-- .site-footer -->
-<footer class="site-footer">
-	<div class="container">
-          <p class="colophon">Copyright 2021 WeatherReal. All rights reserved</p>
-					<p>Made</span> by <a href="http://www.jcbonassin.net" target="_blank"><strong>JC Bonassin</strong></a>
-          <small>&copy; 2021 <strong>WeatherReal</strong></small>  
+  <footer class="site-footer">
+	  <div class="container">
+      <p class="colophon">Copyright 2021 WeatherReal. All rights reserved</p>
+			<p>Made</span> by <a href="http://www.jcbonassin.net" target="_blank"><strong>JC Bonassin</strong></a>
+      <small>&copy; 2021 <strong>WeatherReal</strong></small>  
 		<footer class="branding">
         <small>&copy; 2021 <strong>WeatherReal</strong></small>     
+      </footer>
+		  </div>
+		    <script src="js/jquery-1.11.1.min.js"></script>
+		    <script src="js/plugins.js"></script>
+		    <script src="js/app.js"></script>
+	      </footer>	
     </footer>
-		</div>
-		<script src="js/jquery-1.11.1.min.js"></script>
-		<script src="js/plugins.js"></script>
-		<script src="js/app.js"></script>
-	  </footer>	
-  </footer>
-	</body>
+  </body>
 </html>
 

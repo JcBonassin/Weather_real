@@ -25,7 +25,6 @@ class Helper
         data = JSON.parse(response.body, symbolize_names: true)
         ip = data.fetch(:ip)
     end 
-
 end 
 
 class Error < StandardError

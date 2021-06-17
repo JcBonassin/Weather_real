@@ -4,62 +4,62 @@
 							<div class="contact-details1">		
                 <div id="googleMap" style="width:100%;height:400px;"></div>         
                     <script
-		                src="https://maps.googleapis.com/maps/api/js?key=<%=ENV['MAPS_API_KEY']%>&callback=initMap"
-		                async defer>
+		                  src="https://maps.googleapis.com/maps/api/js?key=<%=ENV['MAPS_API_KEY']%>&callback=initMap"
+		                  async defer>
                     </script>
                                         <script>
-                                          // Note: This example requires that you consent to location sharing when
-                                          // prompted by your browser. If you see the error "The Geolocation service
-                                          // failed.", it means you probably did not give permission for the browser to
-                                          // locate you.
-                                          let map, infoWindow;
+                                             // Note: This example requires that you consent to location sharing when
+                                             // prompted by your browser. If you see the error "The Geolocation service
+                                             // failed.", it means you probably did not give permission for the browser to
+                                             // locate you.
+                                             let map, infoWindow;
 
-                                          function initMap() {
-                                            map = new google.maps.Map(document.getElementById("googleMap"), {
-                                              center: { lat: 41.878113, lng: -87.629799 },
-                                              zoom: 12,
-                                            });
-                                            infoWindow = new google.maps.InfoWindow();
-                                            const locationButton = document.createElement("button");
-                                            locationButton.textContent = "Click here for your Current Location";
-                                            locationButton.classList.add("custom-map-control-button");
-                                            map.controls[google.maps.ControlPosition.TOP_CENTER].push(
-                                              locationButton
-                                            );
-                                            locationButton.addEventListener("click", () => {
-                                              // Try HTML5 geolocation.
-                                              if (navigator.geolocation) {
-                                                navigator.geolocation.getCurrentPosition(
-                                                  (position) => {
-                                                    const pos = {
-                                                      lat: position.coords.latitude,
-                                                      lng: position.coords.longitude,
-                                                    };
-                                                    infoWindow.setPosition(pos);
-                                                    infoWindow.setContent("Your current Location");
-                                                    infoWindow.open(map);
-                                                    map.setCenter(pos);
-                                                  },
-                                                  () => {
-                                                    handleLocationError(true, infoWindow, map.getCenter());
-                                                  }
-                                                );
-                                              } else {
-                                                // Browser doesn't support Geolocation
-                                                handleLocationError(false, infoWindow, map.getCenter());
-                                              }
-                                            });
-                                          }
+                                             function initMap() {
+                                               map = new google.maps.Map(document.getElementById("googleMap"), {
+                                                 center: { lat: 41.878113, lng: -87.629799 },
+                                                 zoom: 12,
+                                               });
+                                               infoWindow = new google.maps.InfoWindow();
+                                               const locationButton = document.createElement("button");
+                                               locationButton.textContent = "Click here for your Current Location";
+                                               locationButton.classList.add("custom-map-control-button");
+                                               map.controls[google.maps.ControlPosition.TOP_CENTER].push(
+                                                 locationButton
+                                               );
+                                               locationButton.addEventListener("click", () => {
+                                                 // Try HTML5 geolocation.
+                                                 if (navigator.geolocation) {
+                                                   navigator.geolocation.getCurrentPosition(
+                                                     (position) => {
+                                                       const pos = {
+                                                         lat: position.coords.latitude,
+                                                         lng: position.coords.longitude,
+                                                       };
+                                                       infoWindow.setPosition(pos);
+                                                       infoWindow.setContent("Your current Location");
+                                                       infoWindow.open(map);
+                                                       map.setCenter(pos);
+                                                     },
+                                                     () => {
+                                                       handleLocationError(true, infoWindow, map.getCenter());
+                                                     }
+                                                   );
+                                                 } else {
+                                                   // Browser doesn't support Geolocation
+                                                   handleLocationError(false, infoWindow, map.getCenter());
+                                                 }
+                                               });
+                                             }
 
-                                          function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-                                            infoWindow.setPosition(pos);
-                                            infoWindow.setContent(
-                                              browserHasGeolocation
-                                                ? "Error: The Geolocation service failed."
-                                                : "Error: Your browser doesn't support geolocation."
-                                            );
-                                            infoWindow.open(map);
-                                          }
+                                             function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+                                               infoWindow.setPosition(pos);
+                                               infoWindow.setContent(
+                                                 browserHasGeolocation
+                                                   ? "Error: The Geolocation service failed."
+                                                   : "Error: Your browser doesn't support geolocation."
+                                               );
+                                               infoWindow.open(map);
+                                             }
                                         </script>
         
 							        <div class="contact-info">			
@@ -69,26 +69,26 @@
 						<div class="col-md-6 col-md-offset-1">
 							<h2 class="section-title">Your Details</h2>
 							<p>Please complete all fields before submit</p>
-                            <form role="form" onsubmit="return getConfirmation1();" action="/user/<%= current_user.id%>" method="post" class="contact-form">
-                            <input id="hidden" type="hidden" name="_method" value="PATCH">
+                  <form role="form" onsubmit="return getConfirmation1();" action="/user/<%= current_user.id%>" method="post" class="contact-form">
+                  <input id="hidden" type="hidden" name="_method" value="PATCH">
 								<div class="row">
 									<div class="col-md-6"><input type="text" name="username" placeholder="Username" value="<%= current_user.username%>"></div>
 								    <div class="col-md-6"><input type="text" name="name" placeholder="Name" value="<%= current_user.name%>"></div>
-                                </div>
+                        </div>
 								<div class="row">
-                                    <div class="col-md-6"><input type="text" name="surname" placeholder="Surname" value="<%= current_user.surname%>"></div>
-                                    <div class="col-md-6"><input type="password" name="password" placeholder="Password" value="<%= current_user.password%>"></div>
+                      <div class="col-md-6"><input type="text" name="surname" placeholder="Surname" value="<%= current_user.surname%>"></div>
+                      <div class="col-md-6"><input type="password" name="password" placeholder="Password" value="<%= current_user.password%>"></div>
 								</div>
-                                <div class="row">
-                                <div class="col-md-6"><input type="email" name="email" placeholder="Email Addresss..." value="<%= current_user.email%>" style="background-color: grey;" disabled ></div>
+                      <div class="row">
+                      <div class="col-md-6"><input type="email" name="email" placeholder="Email Addresss..." value="<%= current_user.email%>" style="background-color: grey;" disabled ></div>
 							    </div>
-                            <!-- 	<textarea name="" placeholder="Message..."></textarea>-->
+                  <!-- 	<textarea name="" placeholder="Message..."></textarea>-->
 
                             
 								<div class="text-right">
 									<input type="submit" placeholder="Send details">
 								</div>
-			                    </div>
+			              </div>
 							</form>
                   <script type = "text/javascript">
               

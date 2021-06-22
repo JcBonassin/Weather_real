@@ -28,7 +28,7 @@ class LocationsController < ApplicationController
                    flash[:errors] = "Location Error. Please try to add a valid location again"
                     @locations.destroy
                     redirect_to_main
-                  elsif Location.count >= 200 
+                  elsif Location.count >= 300 
                     flash[:errors] = "Sorry. You can only add a Max of 4 locations. Please update or delete one of them"
                     @locations.destroy
                     redirect_to_main

@@ -32,8 +32,8 @@ class ApplicationController < Sinatra::Base
     @news = API.news
     @news_weather = API.news_weather
     if !params[:weather_location].empty?
-        if (@weather == nil && @photos == nil || @photos == {:total=>0, :total_pages=>0, :results=>[]}) 
-        flash[:errors] = "Location Error. Your entry has been deleted. Please try to add a valid location again"
+        if @weather == nil
+        flash[:errors] = "Location Error. Please try to add a valid location again"
         redirect to "/"   
         end
     else

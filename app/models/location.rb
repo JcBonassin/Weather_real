@@ -6,7 +6,7 @@ class Location < ActiveRecord::Base
     private
 
     def only_one
-        if Location.count >= 200
+        if Location.count >= 300
             errors.add :base, 'error'
         end
     end
